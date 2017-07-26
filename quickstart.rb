@@ -1,24 +1,3 @@
-Rails: version - 5.1.2
-
-
-```
-rails new travel_batch
-```
-
----Turned on the Google Calendar , obtained key and client id. Afterwards, downloaded JSON file and labeled it "client_secret.json" per google.---
-
----Install Google client library---
-```
-gem install google-api-client
-```
-
----Set up the sample - create a file named quickstart.rb in your working directory.---
-```
-touch quickstart.rb
-```
-
----Copy in the following code (per Google) and enter it into quickstart.rb---
-```
 require 'google/apis/calendar_v3'
 require 'googleauth'
 require 'googleauth/stores/file_token_store'
@@ -79,49 +58,3 @@ response.items.each do |event|
   start = event.start.date || event.start.date_time
   puts "- #{event.summary} (#{start})"
 end
-```
-
----Run the sample---
-```
-ruby quickstart.rb
-```
----The first time you run the sample, it will prompt you to authorize access:
-
-The sample will attempt to open a new window or tab in your default browser. If this fails, copy the URL from the console and manually open it in your browser.
-
-If you are not already logged into your Google account, you will be prompted to log in. If you are logged into multiple Google accounts, you will be asked to select one account to use for the authorization.
-Click the Accept button.
-The sample will proceed automatically, and you may close the window/tab.---
-
---------------------------------------------------------------------------------------------------------------------------------------------
----In the gem file, we will add our gems to be used---
-```
-gem 'devise'
-gem 'paperclip'
-gem 'my_zipcode_gem'
-```
-
-```
-bundle install
-```
-
-
---Next we are going to set up devise--
-```
-rails generate devise:install
-```
-
-in config/environments/devolopments.rb paste the code generated in the terminal
-```
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-```
-
---In your app.erb paste these alerts--
-```
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-```
---Create a user model through Devise then migrate, default is Admin--
-
-rails g devise User
-rails db:migrate
