@@ -117,6 +117,10 @@ The sample will proceed automatically, and you may close the window/tab.---
 https://www.googleapis.com/auth/calendar	Manage your calendars
 https://www.googleapis.com/auth/calendar.readonly	View your calendars
 
+---Create a controller---
+```
+rails g controller Calendar
+```
 --------------------------------------------------------------------------------------------------------------------------------------------
                         GEM INSTALL
 --------------------------------------------------------------------------------------------------------------------------------------------
