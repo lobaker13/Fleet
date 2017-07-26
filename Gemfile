@@ -39,7 +39,7 @@ gem 'paperclip'
 # convert city names into lat and long via geocoder
 gem 'geocoder'
 # Authorize google calendar api
-gem 'google-api-client', '~> 0.11'
+gem 'google-api-client', '~> 0.11', require: 'google/apis/calendar_v3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

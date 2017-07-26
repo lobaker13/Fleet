@@ -121,6 +121,29 @@ https://www.googleapis.com/auth/calendar.readonly	View your calendars
 ```
 rails g controller Calendar
 ```
+
+---Authorize access to Google Calendar by redirecting user to Google to sign in and consent. In the Calendar controller:---
+```
+class CalendarController < ApplicationController
+  def redirect
+    client = Signet::OAuth2::Client.new({
+      client_id: Rails.application.secrets.google_client_id,
+      client_secret: Rails.application.secrets.google_client_secret,
+      authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+      scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
+      redirect_uri: 'https://localhost:3000/oauth2callback'
+    })
+
+    redirect_to client.authorization_uri.to_s
+  end
+end
+```
+---To test the redirect, we can add some routes in our routes.rb file, then to test we can run our app and then visit the redirect action '/redirect' and it should send us to the consent screen from google---
+```
+resources :calendars
+get '/redirect', to: 'calendar#redirect', as: 'redirect'
+get '/callback', to: 'calendar#callback', as: 'callback'
+```
 --------------------------------------------------------------------------------------------------------------------------------------------
                         GEM INSTALL
 --------------------------------------------------------------------------------------------------------------------------------------------
