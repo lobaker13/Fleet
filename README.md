@@ -280,3 +280,5 @@ rails db:migrate
 ```
 ---now all we need to do is add ``has_friendship`` to our ``User`` model!---
 ---for more info on how to use has_friendship look at the documentation at [has_friendship's github](https://github.com/sungwoncho/has_friendship)---
+
+http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=&sort=dist&key=0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1&secret=Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC
