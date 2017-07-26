@@ -1,0 +1,32 @@
+<%= form_with(model: group_comment, local: true) do |form| %>
+  <% if group_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group_comment.errors.count, "error") %> prohibited this group_comment from being saved:</h2>
+
+      <ul>
+      <% group_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :group_comment_body %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :group_comment_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.text_field :group_id, id: :group_comment_group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

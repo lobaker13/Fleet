@@ -32,6 +32,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Authenticate users using Devise
+gem 'devise'
+# User avatar upload via paperclip
+gem 'paperclip'
+# convert city names into lat and long via geocoder
+gem 'geocoder'
+# Authorize google calendar api
+gem 'google-api-client', '~> 0.11'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

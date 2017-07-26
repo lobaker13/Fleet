@@ -1,6 +1,6 @@
 Rails: version - 5.1.2
 APIs: 'AceHopper', 'Google Calendar'
-Gems: 'Devise', 'Paperclip', 'Geocoder'
+Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship'
 
 ```
 rails new travel_batch
@@ -105,6 +105,7 @@ The sample will proceed automatically, and you may close the window/tab.---
 gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
+gem 'has_friendship'
 ```
 
 ```
@@ -140,6 +141,16 @@ rails db:migrate
 ---Add the packaged views from devise---
 ```
 rails g devise:views
+```
+---Add the packaged controllers from devise---
+```
+rails g devise:controllers users
+```
+---reset registrations controller routes in ``routes.rb``---
+```
+devise_for :users, controllers: {
+    registrations: 'users/registrations'
+    }
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------
                                                         PAPERCLIP
@@ -188,6 +199,20 @@ def user_params
   params.require(:user).permit(:avatar)
 end
 ```
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                        SCAFFOLDING TIME!
+--------------------------------------------------------------------------------------------------------------------------------------------
+---Users are alreasy built from Devise---
+```
+rails g scaffold group name:string description:text start:date end:date
+rails g scaffold trip city:string state:string country:string longitude:float latitude:float zipcode:integer
+rails g scaffold group_comment body:text user:belongs_to group:belongs_to
+rails g scaffold trip_comment body:text user:belongs_to trip:belongs_to
+rails g model group_user user:belongs_to group:belongs_to
+```
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------
                                                         GEOCODER
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,3 +246,17 @@ after_validation :geocode
 Geocoder.coordinates("25 Main St, Cooperstown, NY")
 ```
 ---outputs [42.700149, -74.922767]---
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                        HAS_FRIENDSHIP
+--------------------------------------------------------------------------------------------------------------------------------------------
+---first we need to run a generator that will create a ``friendships`` migration---
+```
+rails generate has_friendship
+```
+---then run the migration---
+```
+rails db:migrate
+```
+---now all we need to do is add ``has_friendship`` to our ``User`` model!---
+---for more info on how to use has_friendship look at the documentation at [has_friendship's github](https://github.com/sungwoncho/has_friendship)---
