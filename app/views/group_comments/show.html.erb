@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @group_comment.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @group_comment.user %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_comment.group %>
+</p>
+
+<%= link_to 'Edit', edit_group_comment_path(@group_comment) %> |
+<%= link_to 'Back', group_comments_path %>
