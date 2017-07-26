@@ -1,9 +1,13 @@
 Rails: version - 5.1.2
-
+APIs: 'AceHopper', 'Google Calendar'
+Gems: 'Devise', 'Paperclip', 'Geocoder'
 
 ```
 rails new travel_batch
 ```
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                            GOOGLE CALENDAR API
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 ---Turned on the Google Calendar , obtained key and client id. Afterwards, downloaded JSON file and labeled it "client_secret.json" per google.---
 
@@ -94,17 +98,21 @@ Click the Accept button.
 The sample will proceed automatically, and you may close the window/tab.---
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+                                                        GEM INSTALL
+--------------------------------------------------------------------------------------------------------------------------------------------
 ---In the gem file, we will add our gems to be used---
 ```
 gem 'devise'
 gem 'paperclip'
-gem 'my_zipcode_gem'
+gem 'geocoder'
 ```
 
 ```
 bundle install
 ```
-
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                          DEVISE
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 --Next we are going to set up devise--
 ```
@@ -122,6 +130,94 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 <p class="alert"><%= alert %></p>
 ```
 --Create a user model through Devise then migrate, default is Admin--
-
+```
 rails g devise User
 rails db:migrate
+```
+--- NOTE:You should restart your application after changing Devise's configuration options. Otherwise, you will run into strange errors, for example, users being unable to login and route helpers being undefined.---
+
+
+---Add the packaged views from devise---
+```
+rails g devise:views
+```
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                        PAPERCLIP
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+---Models---
+```
+class User < ActiveRecord::Base
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+end
+```
+
+---Migrations (since our user will already be generated through Devise)---
+```
+class AddAvatarColumnsToUsers < ActiveRecord::Migration
+  def up
+    add_attachment :users, :avatar
+  end
+
+  def down
+    remove_attachment :users, :avatar
+  end
+end
+```
+
+---Edit and New Views---
+```
+<%= form_for @user, url: users_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+<% end %>
+```
+
+---Controller---
+```
+def create
+  @user = User.create( user_params )
+end
+
+private
+
+# Use strong_parameters for attribute whitelisting
+# Be sure to update your create() and update() controller methods.
+
+def user_params
+  params.require(:user).permit(:avatar)
+end
+```
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                        GEOCODER
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+---IF NOT INCLUDED IN SCAFFOLD!!! Otherwise skip step below------------------
+---Model must have two attributes (database columns) for storing latitude and longitude coordinates. By default we will call them latitude and longitude---
+```
+rails g migration AddLatitudeAndLongitudeToTrip latitude:float longitude:float
+rails db:migrate
+```
+
+---Have our model tell Geocoder which method returns our object's geocodeable address. For our purposes (with AceHoppers input), we will use the :address method for returning similiar strings one would search on google maps, such as:
+"714 Green St, Big Town, MO"
+"Eiffel Tower, Paris, FR"
+"Paris, TX, US"
+---We need to define what parameters we want our "address" method to have add:---
+
+```
+def address
+  [ city, state, country].compact.join(', ')
+end
+```
+
+---Now that our fields are defined , we need to include Geocoder::Trip::Mongoid and we'll call it "geocoded_by"
+```
+geocoded_by :address
+after_validation :geocode
+```
+---Some utility methods are also available, for example to look up coordinates of some location (like searching Google Maps)
+```
+Geocoder.coordinates("25 Main St, Cooperstown, NY")
+```
+---outputs [42.700149, -74.922767]---
