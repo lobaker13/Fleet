@@ -6,10 +6,22 @@ Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship'
 rails new travel_batch
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------
-                                                            GOOGLE CALENDAR API
+                            GOOGLE CALENDAR API
 --------------------------------------------------------------------------------------------------------------------------------------------
+---Create a new project, sign in to the google API console and create new project, after you create it there will be a small wait until it is available to choose. Just look for the notifications icon on the top right. Afterwards, go to the library and pick the API you want/need and click "enable". For us, its the Google Calendar API---
+
+---Next, name the application "Agency Week" or w/e ,you want, in the tab that says "OAuth consent screen". This is what the users will see when they authenticate and sign in with Google---
+
+
+
+---Obtained our client credentials by clicking on the "create credentials" tab then "OAuthclient ID". Application type will be "Web application" and our name again will just be "Agency Week" for now, this will produce a ClientId and a Client secret, which is used in our app to access the API---
+---NOTE--- add a redirect URI to the list of "Authorized redirect URIs". An authorised redirect URI is the resource/route in your application that Google redirects back to after a user grants access, and needs to be specified here. The exact value depends on what port your development web server is running on and what path/route you want to use for the callback, we did https://localhost:3000/callback for development. Make sure the "OOB_URI" and the "Authorized redirect URIs" on your credentials section of your API manager match---
+
+
 
 ---Turned on the Google Calendar , obtained key and client id. Afterwards, downloaded JSON file and labeled it "client_secret.json" per google.---
+
+---Storing our client credentials. In order to keep them private, we will store them in our config/secrets.yml file---
 
 ---Install Google client library---
 ```
@@ -22,9 +34,12 @@ touch quickstart.rb
 ```
 
 ---Copy in the following code (per Google) and enter it into quickstart.rb---
+
+
 ```
 require 'google/apis/calendar_v3'
 require 'googleauth'
+require 'google/api_client/client_secrets'
 require 'googleauth/stores/file_token_store'
 
 require 'fileutils'
@@ -97,8 +112,13 @@ If you are not already logged into your Google account, you will be prompted to 
 Click the Accept button.
 The sample will proceed automatically, and you may close the window/tab.---
 
+
+---Scopes for this project---
+https://www.googleapis.com/auth/calendar	Manage your calendars
+https://www.googleapis.com/auth/calendar.readonly	View your calendars
+
 --------------------------------------------------------------------------------------------------------------------------------------------
-                                                        GEM INSTALL
+                        GEM INSTALL
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---In the gem file, we will add our gems to be used---
 ```
@@ -262,4 +282,3 @@ rails db:migrate
 ---for more info on how to use has_friendship look at the documentation at [has_friendship's github](https://github.com/sungwoncho/has_friendship)---
 
 http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=&sort=dist&key=0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1&secret=Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC
-
