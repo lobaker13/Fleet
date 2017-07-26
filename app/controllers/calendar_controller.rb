@@ -5,7 +5,7 @@ class CalendarController < ApplicationController
       client_secret: Rails.application.secrets.google_client_secret,
       authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
-      redirect_uri: callback_url
+      redirect_uri: 'https://localhost:3000/oauth2callback'
     })
 
     redirect_to client.authorization_uri.to_s
