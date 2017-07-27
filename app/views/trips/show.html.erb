@@ -31,6 +31,7 @@ $(document).ready(function(){
 		var query = $("#search input[name=search]").val();
 		var sort = $("#search input[name=sort").val();
 		$.getJSON("<%= search_path(@trip) %>.json",
+
 		{
 			distance: distance,
 			query: query,
