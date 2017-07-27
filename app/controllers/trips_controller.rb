@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :search]
 
   # GET /trips
   # GET /trips.json
@@ -47,6 +47,26 @@ class TripsController < ApplicationController
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+    uri = URI( 'http://api.acehopper.com/v1/attraction/search' )
+    uri.query = URI.encode_www_form(
+      distance: params[:distance],
+      lat: @trip.latitude,
+      lon: @trip.longitude,
+      query: params[:search],
+      sort: params[:sort],
+      key: '0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1',# ENV['APE_HOPPER_KEY'],
+      secret: 'Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC'
+    )
+    result = Net::HTTP.get_response( uri ).body
+    result = result.sub(/^[^\}]*(?:\}(?: |\r|\n)*){2}/, '')
+    render json: result, only: :response
+   
+    # respond_to do |format|
+    #   format.json { render json: Net::HTTP.get_response( uri ).body }
+    # end
   end
 
   # PATCH/PUT /trips/1

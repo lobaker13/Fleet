@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :groups do
       resources :trips 
   end
+  get 'trips/:id/search' => 'trips#search', as: :search
+
   resources :calendars
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
