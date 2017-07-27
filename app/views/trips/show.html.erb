@@ -28,24 +28,18 @@ $(document).ready(function(){
 		event.preventDefault();
 		$("#results").html('');
 		var distance = $("#search input[name=distance]").val();
-		var lat = "<%= @trip.latitude %>";
-		var lon = "<%= @trip.longitude %>";
 		var query = $("#search input[name=search]").val();
 		var sort = $("#search input[name=sort").val();
-		var api_key = '0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1';
-		var api_secret = 'Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC';
-		$.getJSON("http://api.acehopper.com/v1/attraction/search",
+		$.getJSON("<%= search_path(@trip) %>.json",
+
 		{
 			distance: distance,
-			lat: lat,
-			lon: lon,
 			query: query,
-			sort: sort,
-			key: api_key,
-			secret: api_secret
+			sort: sort
 		},
 		function(response) {
-			response.results.forEach(function(listing,index){
+			console.log(response);
+			response.response.forEach(function(listing,index){
 				var template = 
 				`<article class="listing" id="listing_${index}">
 					<img src="${listing.image}"
