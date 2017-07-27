@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726195827) do
+ActiveRecord::Schema.define(version: 20170727141854) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.string "friendable_type"
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "blocker_id"
+    t.integer "status"
+    t.index ["friendable_type", "friendable_id"], name: "index_friendships_on_friendable_type_and_friendable_id"
+  end
 
   create_table "group_comments", force: :cascade do |t|
     t.text "body"
@@ -51,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170726195827) do
   end
 
   create_table "trips", force: :cascade do |t|
+    t.integer "group_id"
     t.string "city"
     t.string "state"
     t.string "country"
@@ -59,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170726195827) do
     t.integer "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_trips_on_group_id"
   end
 
   create_table "users", force: :cascade do |t|
