@@ -1,34 +1,64 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>City:</strong>
   <%= @trip.city %>
 </p>
+<form id="search">
+  <input type="text" name="search" placeholder="e.x. Restaurants, Concerts, Venues">
+  <select form="search" name="distance">
+  	<option value="10">Select a radius (in miles)</option>
+  	<option value="10">10</option>
+  	<option value="25">25</option>
+  	<option value="50">50</option>
+  	<option value="100">100</option>
+  </select>
+  <select form="search" name="sort">
+  	<option value="dist">Sort by:</option>
+  	<option value="dist">Distance</option>
+  	<option value="name">Alphabetical</option>
+  	<option value="rank">Popularity</option>
+  </select>
+  <input type="submit" value="search">
+</form>
+<div id="results"></div>
 
-<p>
-  <strong>State:</strong>
-  <%= @trip.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @trip.country %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @trip.longitude %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @trip.latitude %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @trip.zipcode %>
-</p>
-
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+<script>
+$(document).ready(function(){
+	$("#search").submit(function(event){
+		event.preventDefault();
+		$("#results").html('');
+		var distance = $("#search input[name=distance").val();
+		var lat = "<%= @trip.latitude %>";
+		var lon = "<%= @trip.longitude %>";
+		var query = $("#search input[name=search]").val();
+		var sort = $("#search input[name=sort").val();
+		var api_key = '0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1';
+		var api_secret = 'Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC';
+		$.getJSON("http://api.acehopper.com/v1/attraction/search?",
+		{
+			distance: distance,
+			lat: lat,
+			lon: lon,
+			query: query,
+			sort: sort,
+			key: api_key,
+			secret: api_secret
+		},
+		function(response) {
+			response.results.forEach(function(listing,index){
+				var template = 
+				`<article class="listing" id="listing_${index}">
+					<img src="${listing.image}"
+					<h4 class="title">${listing.name}</h4>
+					<p class="description">${listing.description}</p>
+					<p class="rating">${listing.rating}</p>
+					<a href="${listing.website}">Website</a>
+				</article>`;
+				$("#results").append(template);
+			});
+		}
+		);
+	});
+});
+</script>
+<%# link_to 'Back', group_path(@trip.group) %>

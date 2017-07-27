@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :trip_comments
   resources :group_comments
-  resources :trips
-  resources :groups
+  resources :groups do
+      resources :trips 
+  end
   resources :calendars
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"

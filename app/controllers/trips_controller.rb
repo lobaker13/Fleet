@@ -10,7 +10,10 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
+    @trip = Trip.find(params[:id])
   end
+
+  
 
   # GET /trips/new
   def new
@@ -24,12 +27,21 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(trip_params)
+    p params
+    @trip = Trip.new(
+        group_id: params[:group_id],
+        city: params[:trip][:city],
+        state: params[:trip][:state],
+        country: params[:trip][:country],
+        zipcode: params[:trip][:zipcode]
+      )
+    @trip.latitude = Geocoder.coordinates(@trip.address)[0]
+    @trip.longitude = Geocoder.coordinates(@trip.address)[1]
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
+        format.html { redirect_to group_trip_url(@trip.group, @trip), notice: 'Trip was successfully created.' }
+        format.json { render :show, status: :created, location: group_trip_url(@trip.group, @trip) }
       else
         format.html { render :new }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
