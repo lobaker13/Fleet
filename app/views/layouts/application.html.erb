@@ -27,7 +27,7 @@
           </div>
           <div class="col-md-4">
           <% if current_user %>
-          <p>Welcome, <%= link_to current_user.fname, current_user %></p>
+          <p>Welcome, <%# link_to current_user.fname, current_user %></p>
           <% else %>
           <div id="login">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
