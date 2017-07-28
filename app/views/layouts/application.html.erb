@@ -3,15 +3,60 @@
   <head>
     <title>TravelBatch</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Patua+One|Zilla+Slab" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+      <header>
   	   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
+       <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <a href="/" id="logoref"><%= image_tag "fleet-logo.png", id: 'logo' %>
+              <h3>Go Together.</h3>
+            </a>
+          </div>
+          <div class="col-md-4">
+          <!-- search by user -->
+          </div>
+          <div class="col-md-4">
+          <% if current_user %>
+          <p>Welcome, <%= link_to current_user.fname, current_user %></p>
+          <% else %>
+          <div id="login">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= f.email_field :email, autofocus: true, placeholder: 'Email', id: 'email' %>
+
+              <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', id: 'password' %>
+
+            <% if devise_mapping.rememberable? -%>
+            <div id="remember">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+            </div>
+            <% end -%>
+
+            <div class="actions">
+              <%= f.submit "Log in", id: 'submit' %>
+            </div>
+          <% end %>
+          <div id="shared">
+          <%= render "devise/shared/links" %>
+          </div>
+          </div>
+          <% end %>
+          </div>
+        </div>
+       </div>
+       </header>
+    <div class="container"> 
     <%= yield %>
+    </div>
   </body>
 </html>
