@@ -91,7 +91,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
+      format.html { redirect_to groups_trips_url (@group), notice: 'Trip was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -10,6 +10,7 @@ class ItinerariesController < ApplicationController
   # GET /itineraries/1
   # GET /itineraries/1.json
   def show
+    # @trip = Trip.find(params[:id])---Set_trip already
   end
 
   # GET /itineraries/new
@@ -25,10 +26,10 @@ class ItinerariesController < ApplicationController
   # POST /itineraries.json
   def create
     @itinerary = Itinerary.new(itinerary_params)
-
+    @itinerary.trip_id = @trip.id
     respond_to do |format|
       if @itinerary.save
-        format.html { redirect_to @itinerary, notice: 'Itinerary was successfully created.' }
+        format.html { redirect_to group_trip_itinerary_path(@trip.group, @trip, @itinerary), notice: 'Itinerary was successfully created.' }
         format.json { render :show, status: :created, location: @itinerary }
       else
         format.html { render :new }
@@ -56,7 +57,7 @@ class ItinerariesController < ApplicationController
   def destroy
     @itinerary.destroy
     respond_to do |format|
-      format.html { redirect_to itineraries_url, notice: 'Itinerary was successfully destroyed.' }
+      format.html { redirect_to group_trip_itineraries_url(@trip.group, @trip), notice: 'Itinerary was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

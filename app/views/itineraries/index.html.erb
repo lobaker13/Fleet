@@ -20,9 +20,9 @@
         <td><%= itinerary.description %></td>
         <td><%= itinerary.start_time %></td>
         <td><%= itinerary.end_time %></td>
-        <td><%= link_to 'Show', itinerary %></td>
-        <td><%= link_to 'Edit', edit_itinerary_path(itinerary) %></td>
-        <td><%= link_to 'Destroy', itinerary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', group_trip_itinerary_path(@trip.group,@trip,itinerary) %></td>
+        <td><%= link_to 'Edit', edit_group_trip_itinerary_path(@trip.group,@trip,itinerary) %></td>
+        <td><%= link_to 'Destroy', group_trip_itinerary_path(@trip.group, @trip, itinerary), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
