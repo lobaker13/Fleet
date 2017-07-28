@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :search]
+  before_action :set_group, except: [:search]
 
   # GET /trips
   # GET /trips.json
@@ -101,6 +102,9 @@ class TripsController < ApplicationController
       @trip = Trip.find(params[:id])
     end
 
+    def set_group
+      @group = Group.find(params[:group_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
       params.require(:trip).permit(:city, :state, :country, :longitude, :latitude, :zipcode)
