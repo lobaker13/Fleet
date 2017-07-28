@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "Group Name" %>
     <%= form.text_field :name, id: :group_name %>
   </div>
 
@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :start %>
-    <%= form.date_select :start, id: :group_start %>
+    <%= form.date_select :start, id: :group_start, start_year: Date.today.year - 10%>
   </div>
 
   <div class="field">
     <%= form.label :end %>
-    <%= form.date_select :end, id: :group_end %>
+    <%= form.date_select :end, id: :group_end, end_year: Date.today.year + 10 %>
   </div>
 
   <div class="actions">
