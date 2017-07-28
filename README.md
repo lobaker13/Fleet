@@ -14,7 +14,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
 gem 'has_friendship'
-gem 'simple_calendar'
+gem  'simple_calendar','~> 2.0'
 ```
 
 ```
@@ -171,3 +171,11 @@ rails db:migrate
 ---for more info on how to use has_friendship look at the documentation at [has_friendship's github](https://github.com/sungwoncho/has_friendship)---
 
 http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=&sort=dist&key=0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1&secret=Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+                                                      SIMPLE_CALENDAR
+--------------------------------------------------------------------------------------------------------------------------------------------
+<!-- Create a multi-day calendar -->
+```
+rails g scaffold Itinerary title:string description:text start_time:datetime end_time:datetime
+```
