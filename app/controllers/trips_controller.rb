@@ -55,6 +55,7 @@ class TripsController < ApplicationController
       distance: params[:distance],
       lat: @trip.latitude,
       lon: @trip.longitude,
+      limit: '30',
       query: params[:search],
       sort: params[:sort],
       key: '0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1',# ENV['APE_HOPPER_KEY'],
