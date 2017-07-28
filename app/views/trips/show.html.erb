@@ -21,7 +21,6 @@
   <input type="submit" value="search">
 </form>
 <div id="results"></div>
-
 <script>
 $(document).ready(function(){
 	$("#search").submit(function(event){
@@ -40,7 +39,7 @@ $(document).ready(function(){
 		function(response) {
 			console.log(response);
 			response.response.forEach(function(listing,index){
-				var template = 
+				var template =
 				`<article class="listing" id="listing_${index}">
 					<img src="${listing.image}"
 					<h4 class="title">${listing.name}</h4>

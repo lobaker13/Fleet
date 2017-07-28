@@ -40,6 +40,7 @@ gem 'paperclip'
 gem 'geocoder'
 # Authorize google calendar api
 gem 'has_friendship', git: 'https://github.com/nickfehlinger/has_friendship.git'
+gem  'simple_calendar','~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
