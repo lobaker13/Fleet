@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728193123) do
+
+ActiveRecord::Schema.define(version: 20170728150500) do
+
 
   create_table "friendships", force: :cascade do |t|
     t.string "friendable_type"
@@ -49,6 +51,17 @@ ActiveRecord::Schema.define(version: 20170728193123) do
     t.date "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "itineraries", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "trip_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_itineraries_on_trip_id"
   end
 
   create_table "trip_comments", force: :cascade do |t|

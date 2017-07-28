@@ -11,9 +11,10 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
+    @itinerary = Itinerary.new trip_id: @trip.id
   end
 
-  
+
 
   # GET /trips/new
   def new
@@ -64,7 +65,7 @@ class TripsController < ApplicationController
     result = Net::HTTP.get_response( uri ).body
     result = result.sub(/^[^\}]*(?:\}(?: |\r|\n)*){2}/, '')
     render json: result, only: :response
-   
+
     # respond_to do |format|
     #   format.json { render json: Net::HTTP.get_response( uri ).body }
     # end
