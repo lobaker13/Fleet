@@ -1,6 +1,6 @@
 class ItinerariesController < ApplicationController
   before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_trip
   # GET /itineraries
   # GET /itineraries.json
   def index
@@ -65,6 +65,10 @@ class ItinerariesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_itinerary
       @itinerary = Itinerary.find(params[:id])
+    end
+
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
