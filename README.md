@@ -14,6 +14,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
 gem 'has_friendship'
+gem 'simple_calendar'
 ```
 
 ```
