@@ -11,6 +11,7 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
+    @itinerary = Itinerary.new trip_id: @trip.id
   end
 
 

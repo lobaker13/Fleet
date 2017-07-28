@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     end
   end
   get 'trips/:id/search' => 'trips#search', as: :search
+  get 'trips/:id/newitin' => 'trips#newitin', as: :newitin
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-  get 'users/:id' => 'users#show'
 end
