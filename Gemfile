@@ -39,8 +39,6 @@ gem 'paperclip'
 # convert city names into lat and long via geocoder
 gem 'geocoder'
 # Authorize google calendar api
-gem 'google-api-client', '~> 0.11', require: 'google/apis/calendar_v3'
-# Allow friendships
 gem 'has_friendship', git: 'https://github.com/nickfehlinger/has_friendship.git'
 
 group :development, :test do
