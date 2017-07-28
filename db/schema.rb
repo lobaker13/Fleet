@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170728150500) do
-
+ActiveRecord::Schema.define(version: 20170728193123) do
 
   create_table "friendships", force: :cascade do |t|
     t.string "friendable_type"
