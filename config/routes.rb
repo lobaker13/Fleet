@@ -12,7 +12,4 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-  get 'users/:id' => 'users#show'
-  get '/redirect', to: 'calendar#redirect', as: 'redirect'
-  get '/callback', to: 'calendar#callback', as: 'callback'
 end
