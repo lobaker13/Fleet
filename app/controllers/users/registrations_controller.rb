@@ -59,6 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   def create
   @user = User.create( user_params )
+  redirect_to '/'
   end
 
 private

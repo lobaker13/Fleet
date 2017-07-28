@@ -1,6 +1,11 @@
 <div id="home">
 <% if current_user %>
-	<% current_user.
+	<% current_user.groups.each do |group| %>
+	<div>
+		<h4><%= group.name %></h4>
+		<p><%= group.description %></p>
+	</div>
+	<% end %>
 <% else %>
 	<h2>Welcome to Fleet!</h2>
 	<h3>Fleet is a tool for friends to plan group travel.</h3>
