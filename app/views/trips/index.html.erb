@@ -24,9 +24,10 @@
         <td><%= trip.longitude %></td>
         <td><%= trip.latitude %></td>
         <td><%= trip.zipcode %></td>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# to do: add in the new helper paths (like Edit) %>
+        <td><%= link_to 'Show', group_trip_path(@group, trip) %></td>
+        <td><%= link_to 'Edit', edit_group_trip_path(@group,trip) %></td>
+        <td><%= link_to 'Destroy', group_trip_path(@group,trip), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
     <% end %>
@@ -35,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Trip', new_group_trip_path %>
+<%= link_to 'New Trip', new_group_trip_path(@group) %>
