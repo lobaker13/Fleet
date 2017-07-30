@@ -1,11 +1,23 @@
 <div id="home">
 <% if current_user %>
+	<div id="dashboard">
+	<h3>My Fleets</h3>
 	<% current_user.groups.each do |group| %>
-	<div>
-		<h4><%= group.name %></h4>
+	<div class="group">
+		<h4><%= link_to group.name, group %></h4>
 		<p><%= group.description %></p>
+		<ul>
+			<% group.trips.each do |trip| %>
+			<li><%= link_to trip.city, group_trip_path(group.id, trip.id) %></li>
+			<% end %>
+		</ul>
 	</div>
 	<% end %>
+	</div>
+	<div id="newGroup">
+		<h3>New Fleet</h3>
+		<%= render '/groups/form', group: @group %>
+	</div>
 <% else %>
 	<h2>Welcome to Fleet!</h2>
 	<h3>Fleet is a tool for friends to plan group travel.</h3>
