@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @itineraries.each do |itinerary| %>
+    <% @trip.itineraries.each do |itinerary| %>
       <tr>
         <td><%= itinerary.title %></td>
         <td><%= itinerary.description %></td>
@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<div id="calendar"></div>
+
 
 <br>
 
