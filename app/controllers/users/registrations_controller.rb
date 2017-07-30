@@ -61,6 +61,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   @user = User.create( user_params )
   redirect_to '/'
   end
+  def edit
+  end
+
+  before_action :configure_permitted_parameters
+
+ def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+   user_params.permit(:first_name, :last_name, :username,
+    :email, :password, :password_confirmation)
+  end
+  devise_parameter_sanitizer.permit(:account_update) do |user_params|
+   user_params.permit(:first_name, :last_name, :username,
+    :email, :password, :password_confirmation, :avatar)
+  end
+ end
 
 private
 
@@ -68,6 +83,18 @@ private
 # Be sure to update your create() and update() controller methods.
 
   def user_params
-    params.require(:user).permit(:fname, :lname, :email, :password, :bio, :avatar)
+    params.require(:user).permit(:fname, :lname, :username, :email, :password, :bio, :avatar)
   end
+
+
+protected
+
+def update_resource(resource, params)
+  resource.update_without_password(params)
+end
+
+def after_update_path_for(resource)
+  root_path
+end
+
 end

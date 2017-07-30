@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728193123) do
+ActiveRecord::Schema.define(version: 20170730183124) do
 
   create_table "friendships", force: :cascade do |t|
     t.string "friendable_type"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170728193123) do
     t.string "fname"
     t.string "lname"
     t.text "bio"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
