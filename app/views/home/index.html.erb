@@ -16,7 +16,7 @@
 	</div>
 	<div id="newGroup">
 		<h3>New Fleet</h3>
-		<%= render '/groups/form', group: @group %>
+		<%= render '/groups/form', locals: {group: @group, path: new_group_path(@group)} %>
 	</div>
 <% else %>
 	<h2>Welcome to Fleet!</h2>
