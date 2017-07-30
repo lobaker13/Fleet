@@ -12,5 +12,34 @@
 	h3{
 		font-family: 'Zilla Slab';
 		text-align: center;
+		border-bottom: 1px solid #888;
+	}
+	#dashboard{
+		background-color: #fff;
+		width: 30%;
+		margin: 40px 20px;
+		padding: 20px;
+		border-radius: 20px;
+		display: inline-block;
+		h3{
+			color: #80d;
+		}
+		p{
+			color: #707070;
+		}
+		a:hover{
+			color: #80d;
+			text-decoration: none;
+		}
+		.group{
+			border-bottom: 1px solid #888;
+			h4, p, ul{
+				font-family: 'Nunito'
+			}
+
+			ul{
+				color: #888;
+			}
+		}
 	}
 }
