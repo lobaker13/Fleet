@@ -1,0 +1,18 @@
+<div id="home"><div id="profile">
+<div id="profilepic" style="background-image: url('<%= @user.avatar.url %>');"></div>
+<div id="userInfo">
+<h2><%=@user.fullname %></h2>
+<p>@<%= @user.username %></p>
+<p><%=@user.bio %></p>
+<% unless @user == current_user %>
+	<% if current_user.friends_with?(@user) %>
+		<p id="friend">You're friends!</p>
+		<%= link_to "Remove Friend", remove_friend_path(@user.id, current_user.id), remote: true %>
+	<% elsif current_user.pending_friends.include?(@user) %>
+		<p id="friend">Request Pending</p>
+	<% else %>
+		<%= link_to "Add Friend", add_friend_path(@user.id, current_user.id), remote: true %>
+	<% end %>
+<% end %>
+</div>
+</div></div>

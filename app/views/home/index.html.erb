@@ -18,6 +18,44 @@
 		<h3>New Fleet</h3>
 		<%= render '/groups/form', locals: {group: @group, path: new_group_path(@group)} %>
 	</div>
+	<div id="friends">
+		<!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#requests" aria-controls="requests" role="tab" data-toggle="tab">Requests</a></li>
+	    <li role="presentation"><a href="#pending" aria-controls="pending" role="tab" data-toggle="tab">Pending</a></li>
+	    <li role="presentation"><a href="#friendsList" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+	    <div role="tabpanel" class="tab-pane active" id="requests">
+	    	<% current_user.requested_friends.each do |request| %>
+	    	<div class="friend">
+	    	<div class="friendsPic" style="background-image: url('<%= request.avatar.url %>');"></div>
+	    	<%= link_to request.fullname, profile_path(request.username) %>
+	    	<%= link_to "Accept Request", accept_friend_path(request.id, current_user.id) %>
+	    	</div>
+	    	<% end %>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="pending">
+	    	<% current_user.pending_friends.each do |pending| %>
+	    	<div class="friend">
+	    	<div class="friendsPic" style="background-image: url('<%= pending.avatar.url %>');"></div>
+	    	<%= link_to pending.fullname, profile_path(pending.username) %>
+	    	</div>
+	    	<% end %>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="friendsList">
+	    	<% current_user.friends.each do |friend| %>
+	    	<div class="friend">
+	    	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>
+	    	<%= link_to friend.fullname, profile_path(friend.username) %>
+	    	<%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id), confirm: 'Are you sure?' %>
+	    	</div>
+	    	<% end %>
+	    </div>
+	  </div>
+	</div>
 <% else %>
 	<h2>Welcome to Fleet!</h2>
 	<h3>Fleet is a tool for friends to plan group travel.</h3>

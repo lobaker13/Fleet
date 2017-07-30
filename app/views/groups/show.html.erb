@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @group.name %>
-</p>
+</h2>
 
 <p>
-  <strong>Description:</strong>
   <%= @group.description %>
 </p>
 
 <p>
-  <strong>Start:</strong>
+Start:
   <%= @group.start %>
 </p>
 
 <p>
-  <strong>End:</strong>
+End:
   <%= @group.end %>
 </p>
+
+<div id="addPeople">
+<h3>Add Your Friends!</h3>
+<% current_user.friends.each do |friend| %>
+<div class="friend">
+	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>
+	<%= link_to friend.fullname, profile_path(friend.username) %>
+	<%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id) %>
+	</div>
+</div>
+<% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %> |

@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_friendship
   has_many :group_users
   has_many :groups, through: :group_users
+  def fullname
+  	"#{fname} #{lname}".strip
+  end
 end
