@@ -2,6 +2,8 @@
 <h2>
   <%= @group.name %>: <%= @trip.city %>
 </h2>
+<div class="row">
+  <div class="col-md-6">
 <form id="search">
   <input type="text" name="search" placeholder="e.x. Restaurants, Concerts, Venues">
   <select form="search" name="distance">
@@ -54,10 +56,37 @@ $(document).ready(function(){
 	});
 });
 </script>
+</div>
 
+
+  <div class="col-md-6">
+    <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip) %>
+    <div id="calendar"></div>
+  </div>
+</div>
 <%= link_to 'Back', group_trips_path(@group) %>
+<script>
+  $('#calendar').fullCalendar({
+     events: '<%= group_trip_itineraries_path(@group,@trip, format: :json) %>',
+    eventLimit: true,
+    aspectRatio: 2,
+    eventColor: 'black',
+    eventBackgroundColor: '#80d',
+    eventTextColor: 'white',
+    header: { left: 'prev', center: 'title', right: 'next' },
+    navLinks: true,
+    eventDrop: function(event, delta, revertFunc) {
+
+        alert(event.title + " was moved to " + event.start.format());
+
+        if (!confirm("Are you sure about this change?")) {
+            revertFunc();
+        }
+      }
+
+  });
+</script>
 <% else %>
 <h2>It doesn't look like you're a part of this group</h2>
 <%= link_to "Take me Home!", root_path %>
 <% end %>
-
