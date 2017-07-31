@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   get 'removefriend/:user_id/:current_user_id' => "home#remove_friend", as: 'remove_friend'
   get 'blockfriend/:user_id/:current_user_id' => "home#block_friend", as: 'block_friend'
   get 'unblockfriend/:user_id/:current_user_id' => "home#unblock_friend", as: 'unblock_friend'
+  get 'addtogroup/:user_id/:group_id' => "groups#group_user", as: 'add_group_user'
+  get 'removefromgroup/:user_id/:group_id' => "groups#destroy_group_user", as: 'destroy_group_user'
 end
