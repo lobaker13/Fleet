@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% if @group.users.include?(current_user) %>
 <h2>
   <%= @group.name %>
 </h2>
@@ -17,20 +17,38 @@ Start:
 End:
   <%= @group.end %>
 </p>
-
+<div id="fleet">
+<h3>Our Fleet</h3>
+<% @group.users.each do |user| %>
+	<div class="user">
+		<div class="friendsPic" style="background-image: url('<%= user.avatar.url %>');"></div>
+		<%= link_to user.fullname, profile_path(user.username) %>
+		<%# if user == current_user %>
+		<%# link_to "Leave This Group", destroy_group_user_path(user.id, @group.id) %>
+		<%# end %>
+	<% end %>
+	</div>
+</div>
+<% if @group.users.include?(current_user) %>
 <div id="addPeople">
 <h3>Add Your Friends!</h3>
 <% current_user.friends.each do |friend| %>
 <div class="friend">
 	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>
 	<%= link_to friend.fullname, profile_path(friend.username) %>
-	<%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id) %>
+	<%= link_to "Add To This Group", add_group_user_path(friend.id, @group.id) %>
 	</div>
 </div>
+<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %> |
 <%= link_to 'Current Trips', group_trips_path(@group)%> |
 <%= link_to 'New Trip', new_group_trip_path(@group) %>
+
+<% else %>
+<h2>It doesn't look like you're a part of this group</h2>
+<%= link_to "Take me Home!", root_path %>
+<% end %>
 <!-- < render :partial => "trips/form", :locals => {:trip => @trip} %> -->

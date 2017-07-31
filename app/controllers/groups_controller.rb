@@ -38,6 +38,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def group_user
+    @user = User.find_by(id: params[:user_id])
+    @group = Group.find_by(id: params[:group_id])
+    GroupUser.create(user_id: @user.id, group_id: @group.id)
+    redirect_back(fallback_location: group_path(@group))
+  end
+  # def destroy_group_user
+  #   @group_user = GroupUser.where(user_id: params[:user_id]) && (group_id: params[:group_id])
+  #   @group_user.destroy
+  # end
+
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
