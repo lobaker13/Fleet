@@ -57,7 +57,37 @@
 	  </div>
 	</div>
 <% else %>
-	<h2>Welcome to Fleet!</h2>
-	<h3>Fleet is a tool for friends to plan group travel.</h3>
-<% end %>
+	<!-- Homepage for not logged in -->
+	<div class="parallax">
+		<div class="parallax_layer parallax_layer-back">
+			<%= image_tag "Fleet_background.png" %>
+		</div>
+		<div class="parallax_layer parallax_layer-mid">
+			<div id="midback">
+				<h2>Welcome To Fleet!</h2>
+				<h3>Fleet is a planning tool for social travellers</h3>
+				<div class="steps">
+					<h4>Step One</h4>
+					<%= image_tag "Fleet_createafleet.png" %>
+					<p>form your fleet</p>
+				</div>
+				<div class="steps">
+					<h4>Step Two</h4>
+					<%= image_tag "Fleet_addevnts.png" %>
+					<p>plan your trip</p>
+				</div>
+				<div class="steps">
+					<h4>Step Three</h4>
+					<%= image_tag "Fleet_suggestcity.png" %>
+					<p>see the world!</p>
+				</div>
+
+			</div>
+		</div>
+		<div class="parallax_layer parallax_layer-front">
+		<%= image_tag "Fleet_foreground.png" %>
+		</div>
+	</div>
 </div>
+<% end %>
+
