@@ -48,6 +48,11 @@ $(document).ready(function(){
 					<p class="description">${listing.description}</p>
 					<p class="rating">${listing.rating}</p>
 					<a href="${listing.website}">Website</a>
+          <form method="post" action="<%= new_group_trip_itinerary_path(@trip.group,@trip)%>">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="itinerary[description]" value="${listing.description}" />
+            <input type="hidden" name="itinerary[title]" value="${listing.name}" />
+          <a onclick="javascript:this.parentNode.submit();">Add to Calendar</a>
 				</article>`;
 				$("#results").append(template);
 			});
@@ -55,31 +60,27 @@ $(document).ready(function(){
 		);
 	});
 });
+
 </script>
 </div>
-
-
   <div class="col-md-6">
     <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip) %>
     <div id="calendar"></div>
   </div>
 </div>
-<%= link_to 'Back', group_trips_path(@group) %>
+<%= link_to 'My Fleet', group_path(@group) %>
 <script>
   $('#calendar').fullCalendar({
      events: '<%= group_trip_itineraries_path(@group,@trip, format: :json) %>',
     eventLimit: true,
     aspectRatio: 2,
-    eventColor: 'black',
-    eventBackgroundColor: '#80d',
-    eventTextColor: 'white',
     header: { left: 'prev', center: 'title', right: 'next' },
     navLinks: true,
     eventDrop: function(event, delta, revertFunc) {
 
         alert(event.title + " was moved to " + event.start.format());
 
-        if (!confirm("Are you sure about this change?")) {
+        if (!confirm("Are you sure you want to make this change?")) {
             revertFunc();
         }
       }

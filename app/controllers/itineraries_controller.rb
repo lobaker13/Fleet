@@ -15,7 +15,11 @@ class ItinerariesController < ApplicationController
 
   # GET /itineraries/new
   def new
-    @itinerary = Itinerary.new
+    if params[:itinerary]
+      @itinerary = Itinerary.new(title: params[:itinerary][:title], description: params[:itinerary][:description])
+    else
+      @itinerary = Itinerary.new
+    end
   end
 
   # GET /itineraries/1/edit
@@ -74,6 +78,6 @@ class ItinerariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def itinerary_params
-      params.require(:itinerary).permit(:title, :description, :start_time, :end_time, :color)
+      params.require(:itinerary).permit(:title, :description, :date_range, :start_time, :end_time, :color)
     end
 end
