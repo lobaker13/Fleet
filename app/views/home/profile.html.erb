@@ -4,6 +4,7 @@
 <h2><%=@user.fullname %></h2>
 <p>@<%= @user.username %></p>
 <p><%=@user.bio %></p>
+<% if current_user %>
 <% unless @user == current_user %>
 	<% if current_user.friends_with?(@user) %>
 		<p id="friend">You're friends!</p>
@@ -13,6 +14,7 @@
 	<% else %>
 		<%= link_to "Add Friend", add_friend_path(@user.id, current_user.id), remote: true %>
 	<% end %>
+<% end %>
 <% end %>
 </div>
 </div></div>

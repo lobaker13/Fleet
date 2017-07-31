@@ -77,7 +77,7 @@
 			background-size: cover;
 			border-radius: 50%;
 			display: inline-block;
-			
+
 		}
 	}
 	#profile{
@@ -101,4 +101,18 @@
 		}
 
 	}
+	.search{
+		margin: 20px 40px;
+		.searchImage{
+			height: 100px;
+			width: 100px;
+			background-size: cover;
+			display: inline-block;
+		}
+		h3{
+			font-size: 4em;
+			display: inline-block;
+		}
+	}
+
 }

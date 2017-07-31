@@ -1,7 +1,7 @@
-
-<p>
-  <%= @trip.city %>
-</p>
+<% if @group.users.include?(current_user) %>
+<h2>
+  <%= @group.name %>: <%= @trip.city %>
+</h2>
 <form id="search">
   <input type="text" name="search" placeholder="e.x. Restaurants, Concerts, Venues">
   <select form="search" name="distance">
@@ -56,3 +56,8 @@ $(document).ready(function(){
 </script>
 
 <%= link_to 'Back', group_trips_path(@group) %>
+<% else %>
+<h2>It doesn't look like you're a part of this group</h2>
+<%= link_to "Take me Home!", root_path %>
+<% end %>
+
