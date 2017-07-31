@@ -23,9 +23,9 @@ End:
 	<div class="user">
 		<div class="friendsPic" style="background-image: url('<%= user.avatar.url %>');"></div>
 		<%= link_to user.fullname, profile_path(user.username) %>
-		<%# if user == current_user %>
-		<%# link_to "Leave This Group", destroy_group_user_path(user.id, @group.id) %>
-		<%# end %>
+		<% if user == current_user %>
+		<%= link_to "Leave This Group", destroy_group_user_path(user.id, @group.id) %>
+		<% end %>
 	<% end %>
 	</div>
 </div>
@@ -33,14 +33,24 @@ End:
 <div id="addPeople">
 <h3>Add Your Friends!</h3>
 <% current_user.friends.each do |friend| %>
+<% unless @group.users.include?(friend) %>
 <div class="friend">
 	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>
 	<%= link_to friend.fullname, profile_path(friend.username) %>
 	<%= link_to "Add To This Group", add_group_user_path(friend.id, @group.id) %>
 	</div>
+	<% end %>
 </div>
 <% end %>
 <% end %>
+
+<div id="trips">
+	<h3>Trip Ideas</h3>
+	<% @group.trips.each do |trip| %>
+	<%= link_to trip.city, group_trip_path(trip), class: :trip %>
+	<% end %>
+	<%= link_to 'Suggest A New Trip', new_group_trip_path(@group) %>
+</div>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %> |

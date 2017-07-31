@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   #get 'trips/:id/newitin' => 'trips#newitin', as: :newitin
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
+  get '/usersearch' => 'home#usersearch', as: 'user_search'
   get '/:username' => 'home#profile', as: :profile
   devise_for :users, controllers: {
         registrations: 'users/registrations'

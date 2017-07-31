@@ -1,5 +1,10 @@
+<% if @group.users.include?(current_user) %>
 <h1>New Trip</h1>
 
 <%= render 'form', trip: @trip, url: group_trips_path(@group) %>
 
 <%= link_to 'Back', group_trips_path %>
+<% else %>
+<h2>It doesn't look like you're a part of this group</h2>
+<%= link_to "Take me Home!", root_path %>
+<% end %>
