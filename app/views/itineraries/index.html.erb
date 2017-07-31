@@ -37,10 +37,16 @@
     selectable: true,
     selectHelper: true,
     editable: true,
+    eventStartEditable: true,
     eventLimit: true,
+    eventColor: 'black',
+    eventBackgroundColor: '#80d',
+    eventTextColor: 'white',
+    header: { left: 'month,agendaWeek,agendaDay', center: 'title' },
+    navLinks: true,
     eventDrop: function(event, delta, revertFunc) {
 
-        alert(event.title + " was dropped on " + event.start.format());
+        alert(event.title + " was moved to " + event.start.format());
 
         if (!confirm("Are you sure about this change?")) {
             revertFunc();

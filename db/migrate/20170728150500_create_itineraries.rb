@@ -6,6 +6,7 @@ class CreateItineraries < ActiveRecord::Migration[5.1]
       t.belongs_to :trip
       t.datetime :start_time
       t.datetime :end_time
+      t.string :color
 
       t.timestamps
     end
