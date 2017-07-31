@@ -14,6 +14,7 @@
 //= require fullcalendar
 //= require rails-ujs
 //= require_tree .
+
 document.addEventListener("DOMContentLoaded", function(){
   $('#calendar').fullCalendar({
      itinerary: 'group/trip/itinerary.json'
