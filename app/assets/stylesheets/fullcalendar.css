@@ -32,7 +32,8 @@ body .fc { /* extra precedence to overcome jqui */
 .fc-unthemed .fc-popover,
 .fc-unthemed .fc-list-view,
 .fc-unthemed .fc-list-heading td {
-	border-color: #ddd;
+	border: 2px solid #black;
+
 }
 
 .fc-unthemed .fc-popover {
@@ -857,6 +858,8 @@ a.fc-more:hover {
 
 .fc-toolbar h2 {
 	margin: 0;
+	font-family:'Patua One';
+	font-size: 3em;
 }
 
 /* button layering (for border precedence) */

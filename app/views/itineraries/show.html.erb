@@ -12,12 +12,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @itinerary.start_time %>
+  <%= @itinerary.start_time.strftime("%A, %B %e - %l:%M %p") %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @itinerary.end_time %>
+  <%= @itinerary.end_time.strftime("%A, %B %e - %l:%M %p") %>
 </p>
 
 <%= link_to 'Edit', edit_group_trip_itinerary_path(@trip.group, @trip) %> |
