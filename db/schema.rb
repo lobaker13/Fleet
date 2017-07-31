@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170730183124) do
     t.integer "trip_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_itineraries_on_trip_id"
