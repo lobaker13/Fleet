@@ -28,7 +28,7 @@
 
 	  <!-- Tab panes -->
 	  <div class="tab-content">
-	    <div role="tabpanel" class="tab-pane active" id="requests">
+	    <div role="tabpanel" class="tab-pane fade in active" id="requests">
 	    	<% current_user.requested_friends.each do |request| %>
 	    	<div class="friend">
 	    	<div class="friendsPic" style="background-image: url('<%= request.avatar.url %>');"></div>
@@ -37,7 +37,7 @@
 	    	</div>
 	    	<% end %>
 	    </div>
-	    <div role="tabpanel" class="tab-pane" id="pending">
+	    <div role="tabpanel" class="tab-pane fade" id="pending">
 	    	<% current_user.pending_friends.each do |pending| %>
 	    	<div class="friend">
 	    	<div class="friendsPic" style="background-image: url('<%= pending.avatar.url %>');"></div>
@@ -45,7 +45,7 @@
 	    	</div>
 	    	<% end %>
 	    </div>
-	    <div role="tabpanel" class="tab-pane" id="friendsList">
+	    <div role="tabpanel" class="tab-pane fade" id="friendsList">
 	    	<% current_user.friends.each do |friend| %>
 	    	<div class="friend">
 	    	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>

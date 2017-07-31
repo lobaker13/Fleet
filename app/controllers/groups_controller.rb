@@ -44,10 +44,11 @@ class GroupsController < ApplicationController
     GroupUser.create(user_id: @user.id, group_id: @group.id)
     redirect_back(fallback_location: group_path(@group))
   end
-  # def destroy_group_user
-  #   @group_user = GroupUser.where(user_id: params[:user_id]) && (group_id: params[:group_id])
-  #   @group_user.destroy
-  # end
+  def destroy_group_user
+    @group_user = GroupUser.where("user_id LIKE '%#{params[:user_id]}%' AND group_id LIKE '%#{params[:group_id]}%'")
+    @group_user.destroy_all
+    redirect_back(fallback_location: root_path)
+  end
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json

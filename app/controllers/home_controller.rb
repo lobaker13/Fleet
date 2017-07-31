@@ -43,4 +43,13 @@ class HomeController < ApplicationController
 		@current_user.unblock_friend(@user)
 		redirect_back(fallback_location: root_path)
 	end
+	def usersearch
+		puts params[:q]
+	if true || params[:q]
+      @users = User.where("fname LIKE '%#{params[:q]}%' OR lname LIKE '%#{params[:q]}%' OR username LIKE '%#{params[:q]}%'"  )
+    else
+      @users = nil
+    end
+	end
+
 end
