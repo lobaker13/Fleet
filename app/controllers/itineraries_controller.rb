@@ -4,7 +4,7 @@ class ItinerariesController < ApplicationController
   # GET /itineraries
   # GET /itineraries.json
   def index
-    @itineraries = Itinerary.all
+     @itineraries = Itinerary.where(start: params[:start]..params[:end])
   end
 
   # GET /itineraries/1
@@ -74,6 +74,6 @@ class ItinerariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def itinerary_params
-      params.require(:itinerary).permit(:title, :description, :start_time, :end_time)
+      params.require(:itinerary).permit(:title, :description, :start_time, :end_time, :color)
     end
 end

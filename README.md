@@ -14,7 +14,8 @@ gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
 gem 'has_friendship'
-gem  'simple_calendar','~> 2.0'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 ```
 
 ```
@@ -116,6 +117,7 @@ end
 ```
 rails g scaffold group name:string description:text start:date end:date
 rails g scaffold trip city:string state:string country:string longitude:float latitude:float zipcode:integer
+rails g scaffold itinerary title:string description:text start_time:datetime end_time:datetime
 rails g scaffold group_comment body:text user:belongs_to group:belongs_to
 rails g scaffold trip_comment body:text user:belongs_to trip:belongs_to
 rails g model group_user user:belongs_to group:belongs_to
@@ -173,9 +175,43 @@ rails db:migrate
 http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=&sort=dist&key=0AUJEJ9UHQARHUPOG39997HX9K30GVLR0JS4KG1UBV1&secret=Q9YAIBODGO6MSIQYDOIFHACRKDG8KQAE9TT2VGOUGJC
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-                                                      SIMPLE_CALENDAR
+                                                      FULL_CALENDAR
 --------------------------------------------------------------------------------------------------------------------------------------------
-<!-- Create a multi-day calendar -->
+---Ensure that jquery is sourced in the layout file---
 ```
-rails g scaffold Itinerary title:string description:text start_time:datetime end_time:datetime
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 ```
+
+---Applying to our "Itineraries table". After bundle install, add to the application.js file---
+```
+//= require moment
+//= require fullcalendar
+
+```
+---To our application.css, add---
+```
+*= require fullcalendar
+```
+
+---To actually view our calendar, we placed this div in our itineraries.index.htmk.erb file---
+```
+<div id="calendar"></div>
+```
+---Now we need to reformat our JSON a little. In the 'index.json.jbuilder' of itineraries view, we need to restructure such that JSON can output what fullcalendar wants:---
+```
+json.array!(@trip.itineraries) do |itinerary|
+  json.extract! itinerary, :id, :title, :description
+  json.start itinerary.start_time
+  json.end itinerary.end_time
+  json.url group_trip_itineraries_url(@trip.group, @trip, format: :html)
+end
+```
+---Finally, to load the calendar, within our same views page where we are loading it, we need to write a script:---
+```
+<script>
+  $('#calendar').fullCalendar({
+     events: '<%= group_trip_itineraries_path(format: :json) %>',
+  });
+</script>
+```
+---NOTE, 'event:' is a function within simple calendar, and needs to be called to set up the proper params---

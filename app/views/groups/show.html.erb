@@ -48,7 +48,9 @@ End:
 <div id="trips">
 	<h3>Trip Ideas</h3>
 	<% @group.trips.each do |trip| %>
-	<%= link_to trip.city, group_trip_path(@group, trip), class: :trip %>
+
+	<%= link_to trip.city, group_trip_path(@group,trip), class: :trip %>
+
 	<% end %>
 	<%= link_to 'Suggest A New Trip', new_group_trip_path(@group) %>
 </div>
