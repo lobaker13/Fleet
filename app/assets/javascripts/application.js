@@ -16,7 +16,7 @@
 //= require_tree .
 // document.addEventListener("DOMContentLoaded", function(){
 //   $('#calendar').fullCalendar({
-//      itinerary: '/itinerary.json'
+//      events:  'group_trip_itineraries_path'(format: :json),
 //
 //   });
 // });
