@@ -3,6 +3,7 @@
 <h2>
   <%= @group.name %>
 </h2>
+<%= link_to 'Edit Group', edit_group_path(@group) %>
 
 <p>
   <%= @group.description %>
@@ -47,15 +48,14 @@ End:
 <div id="trips">
 	<h3>Trip Ideas</h3>
 	<% @group.trips.each do |trip| %>
+
 	<%= link_to trip.city, group_trip_path(@group,trip), class: :trip %>
+
 	<% end %>
 	<%= link_to 'Suggest A New Trip', new_group_trip_path(@group) %>
 </div>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %> |
-<%= link_to 'Current Trips', group_trips_path(@group)%> |
-<%= link_to 'New Trip', new_group_trip_path(@group) %>
+ 
 
 <% else %>
 <h2>It doesn't look like you're a part of this group</h2>
