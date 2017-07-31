@@ -33,7 +33,19 @@
 <br>
 <script>
   $('#calendar').fullCalendar({
-     events: '<%= group_trip_itineraries_path(format: :json) %>'
+     events: '<%= group_trip_itineraries_path(format: :json) %>',
+    selectable: true,
+    selectHelper: true,
+    editable: true,
+    eventLimit: true,
+    eventDrop: function(event, delta, revertFunc) {
+
+        alert(event.title + " was dropped on " + event.start.format());
+
+        if (!confirm("Are you sure about this change?")) {
+            revertFunc();
+        }
+      }
 
   });
 </script>
