@@ -23,8 +23,8 @@ Start: <%= @group.start %>, End: <%= @group.end %>
 		<% if user == current_user %>
 		<%= link_to " - (Leave This Group)", destroy_group_user_path(user.id, @group.id) %>
 		<% end %>
+  </div>
 	<% end %>
-	</div>
 	<% if @group.users.include?(current_user) %>
 
 <h4>Add Your Friends!</h4>
