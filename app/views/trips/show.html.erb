@@ -1,7 +1,7 @@
 <div id="trips">
 <% if @group.users.include?(current_user) %>
 <h2>
-  <%= @group.name %>: <%= @trip.city %>
+  <%= link_to @group.name, group_path(@group) %>: <%= @trip.city %>
 </h2>
 <div class="row">
   <div class="col-md-6">
@@ -65,7 +65,9 @@ $(document).ready(function(){
 </script>
 </div>
   <div class="col-md-6 calendar">
-    <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip), class: "full_cal_link" %>
+    <%= link_to group_trip_itineraries_path(@group, @trip), class: "full_cal_link" do %>
+    <span class='glyphicon glyphicon-fullscreen'> FullCalendar </span>
+    <% end %>
     <!-- Start smooth scrolling -->
     <script>
       $().ready(function() {
@@ -77,7 +79,6 @@ $(document).ready(function(){
 
   </div>
 </div>
-<%= link_to 'My Fleet', group_path(@group) %>
 <script>
   $('#calendar').fullCalendar({
      events: '<%= group_trip_itineraries_path(@group,@trip, format: :json) %>',
