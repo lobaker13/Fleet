@@ -33,7 +33,7 @@ class ItinerariesController < ApplicationController
     @itinerary.trip_id = @trip.id
     respond_to do |format|
       if @itinerary.save
-        format.html { redirect_to group_trip_itinerary_path(@trip.group, @trip, @itinerary), notice: 'Itinerary was successfully created.' }
+        format.html { redirect_to group_trip_itineraries_url(@trip.group, @trip), notice: 'Itinerary was successfully created.' }
         format.json { render :show, status: :created, location: @itinerary }
       else
         format.html { render :new }
@@ -47,8 +47,8 @@ class ItinerariesController < ApplicationController
   def update
     respond_to do |format|
       if @itinerary.update(itinerary_params)
-        format.html { redirect_to @itinerary, notice: 'Itinerary was successfully updated.' }
-        format.json { render :show, status: :ok, location: @itinerary }
+        format.html { redirect_to group_trip_itinerary_path(@trip.group, @trip, @itinerary), notice: 'Itinerary was successfully updated.' }
+        format.json { render :show, status: :ok, location: group_trip_itinerary_path(@trip.group, @trip, @itinerary) }
       else
         format.html { render :edit }
         format.json { render json: @itinerary.errors, status: :unprocessable_entity }
