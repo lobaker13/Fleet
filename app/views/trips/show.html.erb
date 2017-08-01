@@ -48,7 +48,7 @@ $(document).ready(function(){
           <div class="info">
 					<h4 class="title">${listing.name}</h4>
 					<p class="description">${listing.description}</p>
-          </div
+          </div>
           <form method="post" action="<%= new_group_trip_itinerary_path(@trip.group,@trip)%>">
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <input type="hidden" name="itinerary[description]" value="${listing.description}" />
