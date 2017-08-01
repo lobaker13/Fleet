@@ -14,15 +14,16 @@
 
   <body>
       <header>
-  	   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
        <div class="container-fluid">
         <div class="row">
           <div class="col-md-4">
             <a href="/" id="logoref"><%= image_tag "fleet-logo.png", id: 'logo' %>
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
               <h3>Go Together.</h3>
             </a>
           </div>
+          <% if user_signed_in? %>
           <div class="col-md-4">
           <div id="headersearch">
           <form method="GET" action="/usersearch">
@@ -31,6 +32,7 @@
           </form>
           </div>
           </div>
+          <% end %>
           <div class="col-md-4">
           <% if current_user %>
           <h3 id="welcome">Welcome, <%= link_to current_user.fname, profile_path(current_user.username) %></h3>

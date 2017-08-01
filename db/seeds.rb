@@ -1,57 +1,53 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# Group.create ([
-#   {
-#     id: 1,
-#     name: "WDI Tunesquad",
-#     description: "Just a group of wannabe coders looking for a chance to escape.",
-#     start:("09/01/2017"),
-#   end:("10/15/2017")
-#   },
-#   {
-#     id: 2,
-#     name: "Taco Tuesdays",
-#     description: "Looking for my travel soulmate, willing to spend every Tuesday searching for the best taco spots",
-#     start:("08/22/2017"),
-#   end:("08/22/2017")
-#   },
-#   {
-#     id: 3,
-#     name: "New Zealand-bound",
-#     description: "We have two months to explore the best that the Kiwis have to offer.",
-#     start:("11/01/2017"),
-#   end:("01/15/2018")
-#   },
-#   {
-#     id: 4,
-#     name: "European Newbies",
-#     description: "Traveling through anywhere from 5 to 12 countries in Europe. ",
-#     start:("01/21/2018"),
-#   end:("02/02/2018")
-#   },
-#   {
-#     id: 5,
-#     name: "Deep in [travel] Thought",
-#     description: "Wherever you go becomes a part of you somehow.” “Travel is fatal to prejudice, bigotry, and narrow-mindedness, and many of our people need it sorely on these accounts. Broad, wholesome, charitable views of men and things cannot be acquired by vegetating in one little corner of the earth all one's lifetime",
-#     start:("09/01/2017"),
-#   end:("10/15/2017")
-#   },
-#   {
-#     id: 6,
-#     name: "Adventure is Worthwhile",
-#     description: "Looking to jump around South America. Hopes are high and so is the need to practice our Spanish",
-#     start:("08/023/2017") ,
-#   end:("09/03/2017")
-#   }
-#
-# ])
-#
-Trip.create ([
+
+
+
+
+Group.create! ([
+  {
+    id: 1,
+    name: "WDI Tunesquad",
+    description: "Just a group of wannabe coders looking for a chance to escape.",
+    start:("09/01/2017"),
+    end:("10/15/2017")
+  },
+  {
+    id: 2,
+    name: "Taco Tuesdays",
+    description: "Looking for my travel soulmate, willing to spend every Tuesday searching for the best taco spots",
+    start:("08/22/2017"),
+    end:("08/22/2017")
+  },
+  {
+    id: 3,
+    name: "New Zealand-bound",
+    description: "We have two months to explore the best that the Kiwis have to offer.",
+    start:("11/01/2017"),
+    end:("01/15/2018")
+  },
+  {
+    id: 4,
+    name: "European Newbies",
+    description: "Traveling through anywhere from 5 to 12 countries in Europe. ",
+    start:("01/21/2018"),
+    end:("02/02/2018")
+  },
+  {
+    id: 5,
+    name: "Deep in [travel] Thought",
+    description: "Wherever you go becomes a part of you somehow.” “Travel is fatal to prejudice, bigotry, and narrow-mindedness, and many of our people need it sorely on these accounts. Broad, wholesome, charitable views of men and things cannot be acquired by vegetating in one little corner of the earth all one's lifetime",
+    start:("09/01/2017"),
+    end:("10/15/2017")
+  },
+  {
+    id: 6,
+    name: "Adventure is Worthwhile",
+    description: "Looking to jump around South America. Hopes are high and so is the need to practice our Spanish",
+    start:("08/023/2017") ,
+    end:("09/03/2017")
+  }
+])
+
+Trip.create!([
   {
     id: 1,
     city: "San Diego",
@@ -132,8 +128,18 @@ Trip.create ([
     zipcode: 48127,
     group_id: 5
   }
+  ])
 
-])
+Itinerary.create!([
+  {
+  title: "USS Midway Museum",
+  description: "The USS Midway Museum is San Diego’s newest visitor attraction, this real naval aircraft carrier offers a once in a lifetime opportunity for everyone. Guests of all ages can enjoy a self-guided audio tour featuring 60 exhibits highlighting this “city at sea” and 25 restored aircrafts. Explore galleys, officer’s country and sleeping quarters of a 69,000 ton ship, naturally located in Navy Town USA, a visit to the Midway is uniquely San Diego!",
+  start_time: DateTime.parse("09/01/2017 17:00"),
+  end_time: DateTime.parse("09/01/2017 17:45"),
+  color: "Red",
+  trip_id: 1
+  },
+  ])
 
 User.create([
  {
@@ -143,7 +149,7 @@ User.create([
    avatar: File.new("#{Rails.root}/app/assets/images/profiles/Nick.jpeg"),
    fname: "Nick",
    lname: "Fehlinger",
-   bio: "Hey, I'm Nick. Apart from travel, I thoroughly enjoy keeping up with the most hipster events. Whether its a fresh cup of freshly brewed organic coffee, or rocking a solid Fedora, I am always open to meeting new people. As long as you love MGMT.",
+   bio: "Hey, I'm Nick. Apart from travel, I thoroughly enjoy keeping up with the most hipster events. Whether its a cup of freshly brewed organic coffee, or rocking a solid Fedora, I am always open to meeting new people. As long as you love MGMT.",
    username: "nfehlinger"
  },
  {
@@ -257,7 +263,18 @@ User.create([
    bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
    username: "lbaker123"
  }
+
  ])
+
+# Friendship.create([
+#   friendable_type: " ",
+#   friendable_id: ,
+#   friend_id: ,
+#   blocker_id: ,
+#   status: ,
+#
+#
+#   ])
 
 GroupUser.create([
    {
@@ -404,9 +421,8 @@ GroupUser.create([
     user_id: 1,
     group_id: 5
    }
+   ])
 
-
-])
 
 # Group.find(1).groups << User.find(1) << User.find(3) << User.find(5)
 #
