@@ -1,4 +1,4 @@
-class CreateGroupUsers < ActiveRecord::Migration[5.1]
+class CreateGroupUser < ActiveRecord::Migration[5.1]
   def change
     create_table :group_users do |t|
       t.belongs_to :user, foreign_key: true
