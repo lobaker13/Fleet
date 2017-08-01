@@ -9,19 +9,35 @@
 	margin: 20px auto;
 	padding: 30px;
 	border-radius: 20px;
+	background-color: #fff;
 	h2{
 		font-family: 'Patua One';
 		font-size: 4em;
 		color: #80d;
 		text-align: center;
-		display: inline-block;
 	}
 	h1{
 	  text-align: center;
 	  font-family: 'Patua One';
 	}
 	p{
-	  font-family: 'Nunito'
+	  font-family: 'Nunito';
+		font-size: 1.5em;
+		padding:10px;
+		display: grid;
+		word-spacing:5px;
+
+			strong.start{
+				color:#80d;
+			}
+			.end{
+				color:#80d;
+			}
+	}
+	p.description{
+		margin:auto;
+		width:70%;
+		text-shadow: 3px;
 	}
 	p.link{
 	  font-size: 20px;
@@ -31,5 +47,10 @@
 	}
 	a:hover{
 		color: #80d;
+	}
+	a{
+		.itin_links{
+			color: #fff46c;
+		}
 	}
 }

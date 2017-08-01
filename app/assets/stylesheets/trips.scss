@@ -16,6 +16,9 @@
 		color: #80d;
 		text-align: center;
 		display: inline-block;
+			a{
+				color:#80d;
+			}
 	}
 	article{
 		padding: 20px;
@@ -30,22 +33,30 @@
 			display: inline-block;
 			width: 60%;
 			vertical-align: top;
-			text-align: left;
+			text-align: right;
 		}
-		
+
 		a{
 			display: inline-block;
 			color: #fff;
 			background-color: #80d;
 			padding: 5px;
 			border-radius: 5px;
-			text-align: right;
+			text-align: left;
 		}
-
 	}
 	.calendar{
-		position: fixed;
-		width: 31%;
-		right: 16%;
+		width: 35%;
+		right: -14%;
+		margin-top: 80px;
+		text-align: right;
+			a.full_cal_link{
+				color:black;
+				font-size: 1.5em;
+				padding-bottom: 5px;
+			.glyphicon{
+				padding-bottom: 10px;
+			}
+			}
 	}
 }

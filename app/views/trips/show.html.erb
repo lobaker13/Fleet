@@ -1,7 +1,7 @@
 <div id="trips">
 <% if @group.users.include?(current_user) %>
 <h2>
-  <%= @group.name %>: <%= @trip.city %>
+  <%= link_to @group.name, group_path(@group) %>: <%= @trip.city %>
 </h2>
 <div class="row">
   <div class="col-md-6">
@@ -23,7 +23,7 @@
   <input type="submit" value="search">
 </form>
 <div id="results"></div>
-<!-- <% render :partial => "itineraries/form", :locals => {:itinerary => @itinerary} %> -->
+<!-- < render :partial => "itineraries/form", :locals => {:itinerary => @itinerary, :url => Itinerary.new} > -->
 <script>
 $(document).ready(function(){
 	$("#search").submit(function(event){
@@ -53,7 +53,7 @@ $(document).ready(function(){
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <input type="hidden" name="itinerary[description]" value="${listing.description}" />
             <input type="hidden" name="itinerary[title]" value="${listing.name}" />
-          <a onclick="javascript:this.parentNode.submit();">Add to Calendar</a>
+          <a class="add_to_cal" onclick="javascript:this.parentNode.submit();">Add to Calendar</a>
 				</article>`;
 				$("#results").append(template);
 			});
@@ -65,11 +65,20 @@ $(document).ready(function(){
 </script>
 </div>
   <div class="col-md-6 calendar">
-    <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip), class: "full_cal_link" %>
+    <%= link_to group_trip_itineraries_path(@group, @trip), class: "full_cal_link" do %>
+    <span class='glyphicon glyphicon-fullscreen'> FullCalendar </span>
+    <% end %>
+    <!-- Start smooth scrolling -->
+    <script>
+      $().ready(function() {
+			  $(".calendar").jScroll();
+		  });
+		</script>
+    <!-- End of call to smooth scroll function -->
     <div id="calendar"></div>
+
   </div>
 </div>
-<%= link_to 'My Fleet', group_path(@group) %>
 <script>
   $('#calendar').fullCalendar({
      events: '<%= group_trip_itineraries_path(@group,@trip, format: :json) %>',
@@ -77,6 +86,7 @@ $(document).ready(function(){
     // aspectRatio: 1.5,
     header: { left: 'prev', center: 'title', right: 'next' },
     navLinks: true,
+    eventTextColor: 'white',
     eventDrop: function(event, delta, revertFunc) {
 
         alert(event.title + " was moved to " + event.start.format());
