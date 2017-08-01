@@ -1,24 +1,25 @@
 <div id="home">
 <% if current_user %>
-	<div id="dashboard">
+	<div class="dashboard" id="myfleets">
 	<h3>My Fleets</h3>
 	<% current_user.groups.each do |group| %>
-	<div class="group">
-		<h4><%= link_to group.name, group %></h4>
-		<p><%= group.description %></p>
-		<ul>
-			<% group.trips.each do |trip| %>
-			<li><%= link_to trip.city, group_trip_path(group.id, trip.id) %></li>
-			<% end %>
-		</ul>
-	</div>
+		<div class="group">
+			<h4><%= link_to group.name, group %></h4>
+			<p><%= group.description %></p>
+			<ul>
+				<% group.trips.each do |trip| %>
+				<li><%= link_to trip.city, group_trip_path(group.id, trip.id) %></li>
+				<% end %>
+			</ul>
+		</div>
 	<% end %>
 	</div>
-	<div id="newGroup">
+	<div class="dashboard" id="newfleet">
 		<h3>New Fleet</h3>
 		<%= render '/groups/form', locals: {group: @group, path: new_group_path(@group)} %>
 	</div>
-	<div id="friends">
+	<div class="dashboard" id="friends">
+	<h3>Friends</h3>
 		<!-- Nav tabs -->
 	  <ul class="nav nav-tabs" role="tablist">
 	    <li role="presentation" class="active"><a href="#requests" aria-controls="requests" role="tab" data-toggle="tab">Requests</a></li>
@@ -50,7 +51,7 @@
 	    	<div class="friend">
 	    	<div class="friendsPic" style="background-image: url('<%= friend.avatar.url %>');"></div>
 	    	<%= link_to friend.fullname, profile_path(friend.username) %>
-	    	<%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id), confirm: 'Are you sure?' %>
+	    	<%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id), data: {confirm: "Are you sure?"} %>
 	    	</div>
 	    	<% end %>
 	    </div>

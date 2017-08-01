@@ -4,6 +4,7 @@
 #home{
 	background-color: #7abff9;
 	color: #fff;
+	z-index: -2;
 	h2{
 		font-family: 'Patua One';
 		font-size: 5em;
@@ -14,14 +15,16 @@
 		text-align: center;
 		border-bottom: 1px solid #888;
 	}
-	#dashboard{
+	.dashboard{
 		background-color: #fff;
 		width: 30%;
+		height: 400px;
 		margin: 40px 1%;
 		padding: 20px;
 		border-radius: 20px;
 		display: inline-block;
 		vertical-align: top;
+		overflow-y: scroll;
 		h3{
 			color: #80d;
 		}
@@ -32,55 +35,70 @@
 			color: #80d;
 			text-decoration: none;
 		}
-		.group{
-			border-bottom: 1px solid #888;
-			h4, p, ul{
-				font-family: 'Nunito'
-			}
+	}
+		#myfleets{
+			.group{
+				border-bottom: 1px solid #888;
+				h4, p, ul{
+					font-family: 'Nunito'
+				}
 
-			ul{
-				color: #888;
+				ul{
+					color: #888;
+				}
 			}
 		}
-	}
-	#newGroup{
-		background-color: #fff;
-		width: 30%;
-		margin: 40px 1%;
-		padding: 20px;
-		border-radius: 20px;
-		display: inline-block;
-		vertical-align: top;
-		color: #707070;
-		h3{
-			color: #80d;
-		}
-		p{
-			color: #707070;
-		}
-		a:hover{
-			color: #80d;
-			text-decoration: none;
-		}
-	}
-	#friends{
-		background-color: #fff;
-		width: 30%;
-		margin: 40px 1%;
-		padding: 20px;
-		border-radius: 20px;
-		display: inline-block;
-		vertical-align: top;
-		.friendsPic{
-			height: 50px;
-			width: 50px;
-			background-size: cover;
-			border-radius: 50%;
+		#newfleet{
+			background-color: #fff;
+			width: 30%;
+			margin: 40px 1%;
+			padding: 20px;
+			border-radius: 20px;
 			display: inline-block;
-
+			vertical-align: top;
+			color: #707070;
+			h3{
+				color: #80d;
+			}
+			p{
+				color: #707070;
+			}
+			a:hover{
+				color: #80d;
+				text-decoration: none;
+			}
 		}
-	}
+		#friends{
+			background-color: #fff;
+			width: 30%;
+			margin: 40px 1%;
+			padding: 20px;
+			border-radius: 20px;
+			display: inline-block;
+			vertical-align: top;
+			.friend{
+				a{
+					font-family: 'Zilla Slab';
+					font-size: 1.5em;
+					margin: 20px 0;
+					vertical-align: 100%;
+				}
+			}
+			.friendsPic{
+				height: 50px;
+				width: 50px;
+				background-size: cover;
+				border-radius: 50%;
+				display: inline-block;
+
+			}
+		}
 	#profile{
+		width: 70%;
+		background-color: #fff;
+		margin: 20px auto;
+		padding: 30px;
+		border-radius: 20px;
 		#profilepic{
 			width: 300px;
 			height: 300px;
@@ -93,25 +111,75 @@
 		#userInfo{
 			display: inline-block;
 			vertical-align: top;
+			color: #80d;
+			margin: 40px 10px;
 			p{
 				font-family: 'Nunito';
 				font-size: 3em;
 				line-height: 1em; 
 			}
+			#friend{
+				font-size: 2em;
+			}
+		}
+		#userfriends{
+			width: 45%;
+			h3{
+				color: #80d;
+			}
+			.userfriend{
+				border-bottom: 1px solid #80d;
+				.friendImage{
+				height: 50px;
+				width: 50px;
+				background-size: cover;
+				display: inline-block;
+				border-radius: 50%;
+				}
+				h3{
+				font-size: 2em;
+				display: inline-block;
+				border: none;
+				color: #fff46c;
+				line-height: .5em
+				}
+				p, a{
+					display: inline-block;
+					vertical-align: 100%;
+					color: #80d
+				}
+			}
 		}
 
 	}
-	.search{
-		margin: 20px 40px;
-		.searchImage{
-			height: 100px;
-			width: 100px;
-			background-size: cover;
-			display: inline-block;
-		}
-		h3{
-			font-size: 4em;
-			display: inline-block;
+	#searchresults{
+		.search{
+			width: 70%;
+		background-color: #fff;
+		padding: 15px;
+		padding-top: 20px;
+		padding-left: 20px;
+		border-radius: 45px;
+		margin: 10px auto;
+			.searchImage{
+				height: 50px;
+				width: 50px;
+				background-size: cover;
+				display: inline-block;
+				border-radius: 50%;
+			}
+			h3{
+				font-size: 2em;
+				display: inline-block;
+				border: none;
+				color: #fff46c;
+				line-height: .5em
+			}
+			p, a{
+				display: inline-block;
+				vertical-align: 100%;
+				color: #80d
+			}
 		}
 	}
 

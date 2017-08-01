@@ -24,15 +24,17 @@
             </a>
           </div>
           <div class="col-md-4">
+          <div id="headersearch">
           <form method="GET" action="/usersearch">
             <input type="text" name="q" id="q" placeholder="Search For A User">
             <input type="submit" name="commit" value="Search" data-disable-with="Search">
-        </form>
+          </form>
+          </div>
           </div>
           <div class="col-md-4">
           <% if current_user %>
-          <p>Welcome, <%= link_to current_user.fname, profile_path(current_user.username) %></p>
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          <h3 id="welcome">Welcome, <%= link_to current_user.fname, profile_path(current_user.username) %></h3>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, id: :signout %>
           <% else %>
           <div id="login">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

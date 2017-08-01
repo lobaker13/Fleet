@@ -17,4 +17,28 @@
 <% end %>
 <% end %>
 </div>
+<div id="userfriends">
+<h3><%= @user.fname %>'s Friends</h3>
+	<% @user.friends.each do |friend| %>
+		<div class="userfriend">
+		<% if friend.avatar.url != '/images/original/missing.png' %>
+		<div class="friendImage" style="background-image: url('<%= friend.avatar.url %>');">
+		</div>
+		<% end %>
+		<h3><%= link_to friend.fullname, profile_path(friend.username)%></h3>
+		<% if current_user %>
+			<% unless friend == current_user %>
+				<% if current_user.friends_with?(friend) %>
+					<p id="friend">You're friends!</p>
+					<p><%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id) %></p>
+				<% elsif current_user.pending_friends.include?(friend) %>
+					<p id="friend">Request Pending</p>
+				<% else %>
+					<p><%= link_to "Add Friend", add_friend_path(friend.id, current_user.id) %></p>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	</div>
+</div>
 </div></div>
