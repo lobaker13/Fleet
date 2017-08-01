@@ -34,7 +34,8 @@
 	    	<div class="friend">
 	    	<div class="friendsPic" style="background-image: url('<%= request.avatar.url %>');"></div>
 	    	<%= link_to request.fullname, profile_path(request.username) %>
-	    	<%= link_to "Accept Request", accept_friend_path(request.id, current_user.id) %>
+	    	<%= link_to "Accept Request", accept_friend_path(request.id, current_user.id), class: :friendbutton %> 
+			<%= link_to "Decline Request", decline_friend_path(request.id, current_user.id), class: :friendbutton %>
 	    	</div>
 	    	<% end %>
 	    </div>

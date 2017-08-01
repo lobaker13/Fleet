@@ -23,11 +23,12 @@ Start: <%= @group.start %>, End: <%= @group.end %>
 		<% if user == current_user %>
 		<%= link_to " - (Leave This Group)", destroy_group_user_path(user.id, @group.id) %>
 		<% end %>
-	<% end %>
 	</div>
+	<% end %>
 	<% if @group.users.include?(current_user) %>
 
 <h4>Add Your Friends!</h4>
+<div id="addfriendslist">
 <% current_user.friends.each do |friend| %>
 <% unless @group.users.include?(friend) %>
 <div class="friend">
@@ -36,12 +37,15 @@ Start: <%= @group.start %>, End: <%= @group.end %>
 	<%= link_to "Add To This Group", add_group_user_path(friend.id, @group.id) %>
 	</div>
 	<% end %>
-
 <% end %>
+</div>
+<div id="more">
+<span id="more">scroll for more</span>
+</div>
 <% end %>
 </div>
 
-<div id="trips">
+<div id="triplist">
 	<h4>Trip Ideas</h4>
 	<% @group.trips.each do |trip| %>
 
