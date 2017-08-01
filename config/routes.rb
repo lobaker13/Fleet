@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :trips do
       resources :itineraries
     end
-  end  
+  end
   post 'groups/:group_id/trips/:trip_id/itineraries/new' => 'itineraries#new'
   get 'trips/:id/search' => 'trips#search', as: :search
   #get 'trips/:id/newitin' => 'trips#newitin', as: :newitin

@@ -21,7 +21,7 @@ Start: <%= @group.start %>, End: <%= @group.end %>
 		<div class="friendsPic" style="background-image: url('<%= user.avatar.url %>');"></div>
 		<%= link_to user.fullname, profile_path(user.username) %>
 		<% if user == current_user %>
-		<%= link_to "Leave This Group", destroy_group_user_path(user.id, @group.id) %>
+		<%= link_to " - (Leave This Group)", destroy_group_user_path(user.id, @group.id) %>
 		<% end %>
 	<% end %>
 	</div>
