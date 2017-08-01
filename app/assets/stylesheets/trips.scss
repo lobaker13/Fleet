@@ -1,3 +1,51 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#trips{
+	width: 70%;
+	min-height: 600px;
+	background-color: #fff;
+	margin: 20px auto;
+	padding: 30px;
+	border-radius: 20px;
+
+	h2{
+		font-family: 'Patua One';
+		font-size: 4em;
+		color: #80d;
+		text-align: center;
+		display: inline-block;
+	}
+	article{
+		padding: 20px;
+		background-color: #fff46c;
+		margin-bottom: 10px;
+		border-radius: 20px;
+		text-align: center;
+		img{
+			vertical-align: top;
+		}
+		.info{
+			display: inline-block;
+			width: 60%;
+			vertical-align: top;
+			text-align: left;
+		}
+		
+		a{
+			display: inline-block;
+			color: #fff;
+			background-color: #80d;
+			padding: 5px;
+			border-radius: 5px;
+			text-align: right;
+		}
+
+	}
+	.calendar{
+		position: fixed;
+		width: 31%;
+		right: 16%;
+	}
+}

@@ -7,6 +7,16 @@
 	margin: 20px auto;
 	padding: 30px;
 	border-radius: 20px;
+	h2{
+		font-family: 'Patua One';
+		font-size: 4em;
+		color: #80d;
+		text-align: center;
+		display: inline-block;
+	}
+	a:hover{
+		color: #80d;
+	}
 	.grouptitle{
 		text-align: center;
 		h2{
@@ -39,6 +49,15 @@
 		h4{
 			font-family: 'Zilla Slab';
 			color: #80d;
+		}
+	}
+	#trips{
+		a.trip{
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+		a{
+			display: block;
 		}
 	}
 }

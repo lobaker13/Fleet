@@ -1,4 +1,4 @@
-
+<div id="itineraries">
 
 <p id="notice"><%= notice %></p>
 <!--
@@ -29,6 +29,7 @@
     <% end %>
   </tbody> -->
 <!-- </table> -->
+<p class="link">Back to: <%= link_to @trip.city, group_trip_path(@trip.group, @trip) %></p>
 <p class = "link"><%= link_to 'Add an Event!', new_group_trip_itinerary_path(@trip.group,@trip) %></p>
 <div id="calendar"></div>
 
@@ -55,3 +56,4 @@
         }
       });
 </script>
+</div>
