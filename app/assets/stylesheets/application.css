@@ -112,3 +112,18 @@ header #login, header form, input, header label, .actions, #shared, #remember{
 	text-align: center;
 	font-family: 'Nunito'
 }
+.friendbutton{
+	font-size: .7em !important;
+	background-color: #80d !important;
+	color: #fff !important;
+	padding: 5px !important;
+	border-radius: 5px !important;
+}
+.friendbutton:hover{
+	font-size: .7em !important;
+	background-color: #80d !important;
+	color: #fff46c !important;
+	padding: 5px !important;
+	border-radius: 5px !important;
+}
+

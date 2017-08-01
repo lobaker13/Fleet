@@ -30,15 +30,18 @@
 			<% unless friend == current_user %>
 				<% if current_user.friends_with?(friend) %>
 					<p id="friend">You're friends!</p>
-					<p><%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id) %></p>
+					<p><%= link_to "Remove Friend", remove_friend_path(friend.id, current_user.id), class: :friendbutton %></p>
 				<% elsif current_user.pending_friends.include?(friend) %>
 					<p id="friend">Request Pending</p>
+				<% elsif current_user.requested_friends.include?(friend) %>
+					<p><%= link_to "Accept Request", accept_friend_path(friend.id, current_user.id), class: :friendbutton %>
+					<%= link_to "Decline Request", decline_friend_path(friend.id, current_user.id), class: :friendbutton %></p>
 				<% else %>
-					<p><%= link_to "Add Friend", add_friend_path(friend.id, current_user.id) %></p>
+					<p><%= link_to "Add Friend", add_friend_path(friend.id, current_user.id), class: :friendbutton %></p>
 				<% end %>
 			<% end %>
 		<% end %>
-	<% end %>
 	</div>
+	<% end %>
 </div>
 </div></div>

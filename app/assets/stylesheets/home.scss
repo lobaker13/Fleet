@@ -123,7 +123,6 @@
 			}
 		}
 		#userfriends{
-			width: 45%;
 			h3{
 				color: #80d;
 			}
@@ -137,16 +136,22 @@
 				border-radius: 50%;
 				}
 				h3{
-				font-size: 2em;
-				display: inline-block;
-				border: none;
-				color: #fff46c;
-				line-height: .5em
+					font-size: 2em;
+					display: inline-block;
+					border: none;
+					color: #fff46c;
+					line-height: .5em;
+					vertical-align: 150%;
 				}
 				p, a{
 					display: inline-block;
-					vertical-align: 100%;
 					color: #80d
+				}
+				p{
+					vertical-align: 100%;
+				}
+				a{
+					vertical-align: 0%;
 				}
 			}
 		}
@@ -173,12 +178,18 @@
 				display: inline-block;
 				border: none;
 				color: #fff46c;
-				line-height: .5em
+				line-height: .5em;
+				vertical-align: 150%;
 			}
 			p, a{
 				display: inline-block;
-				vertical-align: 100%;
 				color: #80d
+			}
+			p{
+				vertical-align: 100%;
+			}
+			a{
+				vertical-align: 0%;
 			}
 		}
 	}
