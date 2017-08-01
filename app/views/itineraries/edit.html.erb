@@ -1,6 +1,8 @@
-<h1>Editing Itinerary</h1>
+<div id="itineraries">
+<h2>Editing Itinerary</h2>
 
 <%= render 'form', itinerary: @itinerary %>
 
 <%= link_to 'Show', group_trip_itinerary_path(@trip.group,@trip)%> |
 <%= link_to 'Back', group_trip_itineraries_path(@trip.group,@trip) %>
+</div>

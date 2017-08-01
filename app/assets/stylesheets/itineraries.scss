@@ -1,14 +1,35 @@
 // Place all the styles related to the Itineraries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1{
-  text-align: center;
-  font-family: 'Patua One';
-}
 
-p.link{
-  font-size: 20px;
-  font-family: 'Zilla Slab';
-  text-align: center;
-  padding-bottom: 5px;
+#itineraries{
+	width: 70%;
+	min-height: 600px;
+	background-color: #fff;
+	margin: 20px auto;
+	padding: 30px;
+	border-radius: 20px;
+	h2{
+		font-family: 'Patua One';
+		font-size: 4em;
+		color: #80d;
+		text-align: center;
+		display: inline-block;
+	}
+	h1{
+	  text-align: center;
+	  font-family: 'Patua One';
+	}
+	p{
+	  font-family: 'Nunito'
+	}
+	p.link{
+	  font-size: 20px;
+	  font-family: 'Zilla Slab';
+	  text-align: center;
+	  padding-bottom: 5px;
+	}
+	a:hover{
+		color: #80d;
+	}
 }

@@ -1,12 +1,12 @@
+<div id="itineraries">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h2>
+
   <%= @itinerary.title %>
-</p>
+</h2>
 
 <p>
-  <strong>Description:</strong>
   <%= @itinerary.description %>
 </p>
 
@@ -24,3 +24,4 @@
 <%= link_to 'Back', group_trip_itineraries_path(@trip.group, @trip) %> |
 <%= link_to 'Current Itineraries', group_trip_itineraries_path(@trip.group,@trip)%> |
 <%= link_to 'New Itinerary', new_group_trip_itinerary_path(@trip.group, @trip) %>
+</div>
