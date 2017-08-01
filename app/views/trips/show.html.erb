@@ -1,3 +1,4 @@
+<div id="trips">
 <% if @group.users.include?(current_user) %>
 <h2>
   <%= @group.name %>: <%= @trip.city %>
@@ -91,3 +92,4 @@ $(document).ready(function(){
 <h2>It doesn't look like you're a part of this group</h2>
 <%= link_to "Take me Home!", root_path %>
 <% end %>
+</div>

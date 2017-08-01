@@ -1,3 +1,17 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#users{
+	width: 70%;
+	background-color: #fff;
+	margin: 20px auto;
+	padding: 30px;
+	border-radius: 20px;
+	h2{
+		font-family: 'Patua One';
+		font-size: 4em;
+		color: #80d;
+		text-align: center;
+		display: inline-block;
+	}
+}

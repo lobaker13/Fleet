@@ -1,6 +1,8 @@
-<h1>Editing Trip</h1>
+<div id="trips">
+<h2>Editing Trip</h2>
 
 <%= render 'form', trip: @trip, url: group_trip_path(@group,@trip) %>
 
 <%= link_to 'Show', group_trip_path(@group, @trip)%> |
 <%= link_to 'Back', group_trips_path %>
+</div>

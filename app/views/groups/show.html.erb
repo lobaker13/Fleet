@@ -48,6 +48,7 @@ Start: <%= @group.start %>, End: <%= @group.end %>
 	<%= link_to trip.city, group_trip_path(@group,trip), class: :trip %>
 
 	<% end %>
+	<br/>
 	<%= link_to 'Suggest A New Trip', new_group_trip_path(@group) %>
 </div>
 
