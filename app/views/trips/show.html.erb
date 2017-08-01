@@ -63,8 +63,8 @@ $(document).ready(function(){
 
 </script>
 </div>
-  <div class="col-md-6">
-    <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip) %>
+  <div class="col-md-6 calendar">
+    <%= link_to 'Full Calendar', group_trip_itineraries_path(@group, @trip), class: "full_cal_link" %>
     <div id="calendar"></div>
   </div>
 </div>
