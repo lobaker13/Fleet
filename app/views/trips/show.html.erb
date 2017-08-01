@@ -44,11 +44,11 @@ $(document).ready(function(){
 			response.response.forEach(function(listing,index){
 				var template =
 				`<article class="listing" id="listing_${index}">
-					<img src="${listing.image}"
+					<img src="${listing.image}">
+          <div class="info">
 					<h4 class="title">${listing.name}</h4>
 					<p class="description">${listing.description}</p>
-					<p class="rating">${listing.rating}</p>
-					<a href="${listing.website}">Website</a>
+          </div
           <form method="post" action="<%= new_group_trip_itinerary_path(@trip.group,@trip)%>">
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <input type="hidden" name="itinerary[description]" value="${listing.description}" />
@@ -74,7 +74,7 @@ $(document).ready(function(){
   $('#calendar').fullCalendar({
      events: '<%= group_trip_itineraries_path(@group,@trip, format: :json) %>',
     eventLimit: true,
-    aspectRatio: 2,
+    // aspectRatio: 1.5,
     header: { left: 'prev', center: 'title', right: 'next' },
     navLinks: true,
     eventDrop: function(event, delta, revertFunc) {
