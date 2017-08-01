@@ -1,25 +1,21 @@
 <p id="notice"><%= notice %></p>
+<div id="groups">
 <% if @group.users.include?(current_user) %>
+<div class="grouptitle">
 <h2>
   <%= @group.name %>
 </h2>
 <%= link_to 'Edit Group', edit_group_path(@group) %>
-
-<p>
+</div>
+<h3>
   <%= @group.description %>
-</p>
+</h3>
 
 <p>
-Start:
-  <%= @group.start %>
-</p>
-
-<p>
-End:
-  <%= @group.end %>
+Start: <%= @group.start %>, End: <%= @group.end %>
 </p>
 <div id="fleet">
-<h3>Our Fleet</h3>
+<h4>Our Fleet</h4>
 <% @group.users.each do |user| %>
 	<div class="user">
 		<div class="friendsPic" style="background-image: url('<%= user.avatar.url %>');"></div>
@@ -29,10 +25,9 @@ End:
 		<% end %>
 	<% end %>
 	</div>
-</div>
-<% if @group.users.include?(current_user) %>
-<div id="addPeople">
-<h3>Add Your Friends!</h3>
+	<% if @group.users.include?(current_user) %>
+
+<h4>Add Your Friends!</h4>
 <% current_user.friends.each do |friend| %>
 <% unless @group.users.include?(friend) %>
 <div class="friend">
@@ -41,12 +36,13 @@ End:
 	<%= link_to "Add To This Group", add_group_user_path(friend.id, @group.id) %>
 	</div>
 	<% end %>
+
+<% end %>
+<% end %>
 </div>
-<% end %>
-<% end %>
 
 <div id="trips">
-	<h3>Trip Ideas</h3>
+	<h4>Trip Ideas</h4>
 	<% @group.trips.each do |trip| %>
 
 	<%= link_to trip.city, group_trip_path(@group,trip), class: :trip %>
@@ -55,10 +51,9 @@ End:
 	<%= link_to 'Suggest A New Trip', new_group_trip_path(@group) %>
 </div>
 
- 
-
 <% else %>
 <h2>It doesn't look like you're a part of this group</h2>
 <%= link_to "Take me Home!", root_path %>
 <% end %>
+</div>
 <!-- < render :partial => "trips/form", :locals => {:trip => @trip} %> -->

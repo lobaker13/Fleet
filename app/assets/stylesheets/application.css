@@ -21,16 +21,17 @@
  	background-color: rgba(0,0,0,0);
  }
 body{
-	margin: 0;
+	margin: 30vh 0 0 0;
 	background-color: #7abff9;
  }
 header{
 	background-color: #80d;
 	height: 25vh;
+	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-
+	z-index: 5;
 }
 header a{
 	color: #fff !important;
@@ -55,6 +56,11 @@ header h3{
 	margin: 5px auto;
 	font-size: 3em;
 	color: #fff;
+}
+#headersearch form{
+	margin: 15% auto;
+	display: block;
+	text-align: center;
 }
 header form{
 	text-align: right;
@@ -83,4 +89,16 @@ header #login, header form, input, header label, .actions, #shared, #remember{
 #shared a{
 	display: inline-block;
 	margin: 5px 15px;
+}
+#welcome{
+	display: block;
+	margin: 10% auto 5%;
+	text-align: center;
+}
+#signout{
+	font-size: 2em;
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-family: 'Nunito'
 }

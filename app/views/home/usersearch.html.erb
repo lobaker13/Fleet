@@ -1,18 +1,30 @@
 <div id="home">
 <h2>Search Results</h2>
+	<div id="searchresults">
 	<% if @users %>
 	<% @users.each do |user| %>
-		<a href="/<%= user.username %>">
 	<div class="search">
 		<% if user.avatar.url != '/images/original/missing.png' %>
 		<div class="searchImage" style="background-image: url('<%= user.avatar.url %>');">
 		</div>
 		<% end %>
-		<h3><%= user.fullname %></h3>
+		<h3><%= link_to user.fullname, profile_path(user.username)%></h3>
+		<% if current_user %>
+			<% unless user == current_user %>
+				<% if current_user.friends_with?(user) %>
+					<p id="friend">You're friends!</p>
+					<p><%= link_to "Remove Friend", remove_friend_path(user.id, current_user.id) %></p>
+				<% elsif current_user.pending_friends.include?(user) %>
+					<p id="friend">Request Pending</p>
+				<% else %>
+					<p><%= link_to "Add Friend", add_friend_path(user.id, current_user.id) %></p>
+				<% end %>
+			<% end %>
+		<% end %>
 	</div>
-	</a>
 	<% end %>
 	<% else %>
 		<h3>No results</h3>
 	<% end %>
+	</div>
 </div> 
