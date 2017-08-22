@@ -1,6 +1,6 @@
 Rails: version - 5.1.2
-APIs: 'AceHopper', 'Google Calendar'
-Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship'
+APIs: 'AceHopper'
+Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship', 'full_calendar'
 
 ```
 rails new travel_batch
@@ -184,7 +184,7 @@ http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=
 
 ---Applying to our "Itineraries table". After bundle install, add to the application.js file---
 ```
-//= require moment
+//= require moment\
 //= require fullcalendar
 
 ```
