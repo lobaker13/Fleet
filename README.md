@@ -184,7 +184,7 @@ http://api.acehopper.com/v1/attraction/search?distance=50&zip=43210&query=&type=
 
 ---Applying to our "Itineraries table". After bundle install, add to the application.js file---
 ```
-//= require moment
+//= require moment\
 //= require fullcalendar
 
 ```
