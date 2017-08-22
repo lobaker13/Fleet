@@ -1,6 +1,6 @@
 Rails: version - 5.1.2
-APIs: 'AceHopper', 'Google Calendar'
-Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship'
+APIs: 'AceHopper'
+Gems: 'Devise', 'Paperclip', 'Geocoder', 'has_friendship', 'full_calendar'
 
 ```
 rails new travel_batch

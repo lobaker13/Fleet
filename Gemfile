@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # User avatar upload via paperclip
 gem 'paperclip'
+# For heroku configuration
+gem 'aws-sdk', '~> 2.3'
 # convert city names into lat and long via geocoder
 gem 'geocoder'
 # Authorize google calendar api
