@@ -6,11 +6,11 @@ git_source(:github) do |repo_name|
 end
 
 group :devlopment, :test do
-  gem 'sqlite3'
+  gem "sqlite3"
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
